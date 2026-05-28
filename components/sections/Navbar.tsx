@@ -7,6 +7,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
+import Image from 'next/image'
 
 export function Navbar() {
   return (
@@ -14,7 +15,14 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
-          <BookOpen className="w-6 h-6 text-primary" />
+          // BookOpen className="w-6 h-6 text-primary" 
+          <Image
+            src="@/public/logo.jpeg"      // Path relative to the public folder
+            alt="Description"       // Required for accessibility
+            width={200}             // Desired width in pixels
+            height={200}            // Desired height in pixels
+            className="hidden lg:block"
+          />
           <span className="text-xl font-bold text-foreground">ExamYug</span>
         </div>
 
@@ -53,16 +61,17 @@ export function Navbar() {
           <a href="#contact-us" className="text-foreground hover:text-primary transition-colors">
             Contact Us
           </a>
-        </div>
-
-        {/* Search + Auth Buttons */}
-        <div className="flex items-center gap-4">
           <Input
             type="text"
             placeholder="Search courses..."
-            className="w-48 md:w-64"
+            className="hidden lg:block"
           />
+        </div>
+
+        {/* Search + Auth Buttons */}
+        <div className="flex items-center gap-3">
           <Button variant="outline">Login</Button>
+          <Button variant="default">Sign Up</Button>
         </div>
       </div>
     </nav>
