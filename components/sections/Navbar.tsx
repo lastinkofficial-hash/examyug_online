@@ -11,7 +11,7 @@ import Image from 'next/image'
 
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-border">
+    <nav className="sticky top-0 z-50 bg-light border-b border-border">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
