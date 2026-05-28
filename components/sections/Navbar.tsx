@@ -18,8 +18,8 @@ export function Navbar() {
           <Image
             src="./logo.jpeg"      // Path relative to the public folder
             alt="Description"       // Required for accessibility
-            width={200}             // Desired width in pixels
-            height={200}            // Desired height in pixels
+            width={100}             // Desired width in pixels
+            height={100}            // Desired height in pixels
             className="hidden lg:block"
           />
           <span className="text-xl font-bold text-foreground">ExamYug</span>
@@ -63,7 +63,7 @@ export function Navbar() {
           <Input
             type="text"
             placeholder="Search courses..."
-            className="hidden lg:block"
+            className="hidden lg:block w-auto"
           />
         </div>
 
