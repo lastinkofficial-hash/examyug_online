@@ -21,8 +21,8 @@ const announcements = [
 export default function AnnouncementSection() {
   return (
     <div>
-      <div className="overflow-hidden h-32 relative">
-        <div className="absolute animate-marquee space-y-6">
+      <div className="overflow-hidden h-48 relative">
+        <div className="absolute animate-marquee space-y-3">
           {announcements.map((item, index) => (
             <div
               key={index}

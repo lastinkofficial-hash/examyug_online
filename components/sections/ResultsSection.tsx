@@ -15,7 +15,7 @@ we have acquired remarkable selection ratios in competitive exams.</p>
     <Carousel data-bs-theme="dark">
       <CarouselItem>
         <img
-          className="d-block" width="500px" height="400px"
+          className="d-block" width="95%" 
           src="https://motion.ac.in/storage/website/result_image/1750049613224328.webp"
           alt="First slide"
         />
@@ -24,7 +24,7 @@ we have acquired remarkable selection ratios in competitive exams.</p>
 
       <CarouselItem>
         <img
-          className="d-block" width="500px" height="400px"
+          className="d-block" width="95%" 
           src="https://cdn.motion.ac.in/ssp/img/jee-adv-2025.png"
           alt="Second slide"
         />
@@ -33,7 +33,7 @@ we have acquired remarkable selection ratios in competitive exams.</p>
 
       <CarouselItem>
         <img
-          className="d-block" width="500px" height="400px"
+          className="d-block" width="95%" 
           src="https://cdn.motion.ac.in/ssp/img/home-page-img/JEE-2025-result-new.webp"
           alt="Third slide"
         />
@@ -45,7 +45,7 @@ we have acquired remarkable selection ratios in competitive exams.</p>
       <Carousel data-bs-theme="dark">
       <CarouselItem>
         <img
-          className="d-block" width="500px"
+          className="d-block" width="95%"
           src="https://cdn.motion.ac.in/ssp/img/home-page-img/JEE-2025-result-new.webp"
           alt="First slide"
         />
@@ -54,7 +54,7 @@ we have acquired remarkable selection ratios in competitive exams.</p>
 
       <CarouselItem>
         <img
-          className="d-block" width="500px"
+          className="d-block" width="95%"
           src="https://cdn.motion.ac.in/ssp/img/jee-adv-2025.png"
           alt="Second slide"
         />
@@ -63,7 +63,7 @@ we have acquired remarkable selection ratios in competitive exams.</p>
 
       <CarouselItem>
         <img
-          className="d-block" width="500px"
+          className="d-block" width="95%"
           src="https://motion.ac.in/storage/website/result_image/1750049613224328.webp"
           alt="Third slide"
         />
