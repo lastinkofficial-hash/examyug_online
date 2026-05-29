@@ -8,7 +8,7 @@ const announcements = [
 
 export function AnnouncementBar() {
   return (
-    <div className="bg-accent bg-opacity-10 border-b border-accent border-opacity-20 py-6 relative overflow-hidden">
+    <div className="bg-accent bg-opacity-10 border-b border-accent border-opacity-20 relative overflow-hidden">
       <div className="marquee flex space-x-12">
         {announcements.map((item, index) => (
           <div
