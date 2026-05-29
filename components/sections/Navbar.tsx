@@ -1,4 +1,6 @@
-import { BookOpen, ChevronDown, Menu, X } from 'lucide-react';
+"use client"; // Only needed if you want to use useState for mobile menu toggle
+
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -9,9 +11,22 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Image from 'next/image';
 import { useState } from 'react';
+import Link from 'next/link';
 
-export function Navbar() {
+type NavbarProps = {
+  active?: string; // pass current route or section from page
+};
+
+export function Navbar({ active }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/study-materials', label: 'Study Materials' },
+    { href: '/results', label: 'Results' },
+    { href: '/about-us', label: 'About Us' },
+    { href: '/contact-us', label: 'Contact Us' },
+  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-light border-b border-border">
@@ -19,23 +34,34 @@ export function Navbar() {
         {/* Logo Section */}
         <div className="flex items-center gap-2">
           <Image
-            src="/logo.jpeg" // Path relative to public folder
-            alt="Description"
+            src="/logo.jpeg"
+            alt="ExamYug Logo"
             width={50}
             height={50}
             className="block"
           />
-          <span className="text-xl font-bold text-foreground">ExamYug</span>
+          <span className="text-xl font-bold text-foreground">ExamYug24</span>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#offline" className="text-foreground hover:text-primary transition-colors">
-            Home
-          </a>
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`no-underline transition-colors ${
+                active === item.href
+                  ? 'text-primary font-semibold border-b-2 border-primary'
+                  : 'text-foreground hover:text-primary'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
 
+          {/* Courses Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-foreground hover:text-primary transition-colors">
+            <DropdownMenuTrigger className="flex items-center gap-1 no-underline text-foreground hover:text-primary transition-colors">
               Courses <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -50,18 +76,6 @@ export function Navbar() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <a href="#study-materials" className="text-foreground hover:text-primary transition-colors">
-            Study Materials
-          </a>
-          <a href="#results" className="text-foreground hover:text-primary transition-colors">
-            Results
-          </a>
-          <a href="#about-us" className="text-foreground hover:text-primary transition-colors">
-            About Us
-          </a>
-          <a href="#contact-us" className="text-foreground hover:text-primary transition-colors">
-            Contact Us
-          </a>
           <Input
             type="text"
             placeholder="Search courses..."
@@ -87,11 +101,19 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-light border-t border-border px-4 py-3 space-y-3">
-          <a href="#offline" className="block text-foreground hover:text-primary">Home</a>
-          <a href="#study-materials" className="block text-foreground hover:text-primary">Study Materials</a>
-          <a href="#results" className="block text-foreground hover:text-primary">Results</a>
-          <a href="#about-us" className="block text-foreground hover:text-primary">About Us</a>
-          <a href="#contact-us" className="block text-foreground hover:text-primary">Contact Us</a>
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`block no-underline transition-colors ${
+                active === item.href
+                  ? 'text-primary font-semibold border-b-2 border-primary'
+                  : 'text-foreground hover:text-primary'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
           <Button variant="outline" className="w-full">Login</Button>
           <Button variant="default" className="w-full">Sign Up</Button>
         </div>
