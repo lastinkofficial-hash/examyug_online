@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const announcements = [
@@ -20,36 +22,20 @@ const announcements = [
 
 export default function AnnouncementSection() {
   return (
-    <div>
-      <div className="overflow-hidden h-48 relative">
-        <div className="absolute animate-marquee space-y-3">
-          {announcements.map((item, index) => (
-            <div
-              key={index}
-              className="bg-blue-100 border-l-4 border-blue-500 p-3 rounded-md"
-            >
-              <h3 className="font-semibold text-blue-700">{item.title}</h3>
-              <p className="text-sm text-gray-700">{item.desc}</p>
-              <span className="text-xs text-gray-500">{item.date}</span>
-            </div>
-          ))}
-        </div>
+    <div className="bg-blue-50 border-b border-blue-200 py-4 overflow-hidden relative">
+      {/* Marquee wrapper */}
+      <div className="animate-marquee whitespace-nowrap">
+        {announcements.map((item, index) => (
+          <span
+            key={index}
+            className="mx-8 inline-block text-blue-700 font-medium"
+          >
+            {item.title} — {item.desc} — {item.date}
+          </span>
+        ))}
       </div>
 
-      {/* Custom CSS for marquee */}
-      {/* <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateY(100%);
-          }
-          100% {
-            transform: translateY(-100%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 10s linear infinite;
-        }
-      `}</style> */}
+    
     </div>
   );
 }
