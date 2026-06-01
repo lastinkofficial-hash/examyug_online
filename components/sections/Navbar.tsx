@@ -53,10 +53,7 @@ export function Navbar({ active }: NavbarProps) {
             <Link
               key={item.href}
               href={item.href}
-              className={`relative text-[15px] font-medium no-underline transition-all duration-300 
-              hover:text-primary after:absolute after:left-0 after:-bottom-1 
-              after:h-[2px] after:w-0 after:bg-primary after:transition-all 
-              after:duration-300 hover:after:w-full
+              className={`hover:text-primary transition-colors
               ${
                 active === item.href
                   ? "text-primary after:w-full"
@@ -132,8 +129,7 @@ export function Navbar({ active }: NavbarProps) {
           </Button>
 
           <Button
-            variant="default"
-            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
+            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300 bg-primary hover:bg-primary/90"
           >
             Sign Up
           </Button>

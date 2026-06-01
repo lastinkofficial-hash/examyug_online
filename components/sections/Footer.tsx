@@ -8,7 +8,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <BookOpen className="w-6 h-6" />
-              <span className="text-xl font-bold">EduPrime</span>
+              <span className="text-xl font-bold">ExamYug24</span>
             </div>
             <p className="text-white text-opacity-70">
               Empowering students with quality education and personalized learning experiences.
@@ -40,7 +40,7 @@ export function Footer() {
             <ul className="space-y-3 text-white text-opacity-70">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>support@eduprime.com</span>
+                <span>support@ExamYug24.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
@@ -56,7 +56,7 @@ export function Footer() {
 
         <div className="border-t border-white border-opacity-20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-white text-opacity-70 text-sm">
-            <p>&copy; 2024 EduPrime. All rights reserved.</p>
+            <p>&copy; 2026 ExamYug24. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
