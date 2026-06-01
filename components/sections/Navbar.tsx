@@ -53,12 +53,7 @@ export function Navbar({ active }: NavbarProps) {
             <a
               key={item.href}
               href={item.href}
-<<<<<<< HEAD
               className={`text-dark hover:text-red-500 font-bold hover:text-red-500 ${
-=======
-              className={`hover:text-primary transition-colors
-              ${
->>>>>>> 779d72228611b003ec13ea43de1d8c42add971e1
                 active === item.href
                   ? "text-accent"
                   : "text-foreground"
@@ -135,12 +130,8 @@ export function Navbar({ active }: NavbarProps) {
           </Button>
 
           <Button
-<<<<<<< HEAD
             variant="destructive"
             className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300 hover:bg-primary/90"
-=======
-            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300 bg-primary hover:bg-primary/90"
->>>>>>> 779d72228611b003ec13ea43de1d8c42add971e1
           >
             Sign Up
           </Button>
