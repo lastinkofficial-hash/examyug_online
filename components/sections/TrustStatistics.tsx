@@ -15,7 +15,7 @@ export function TrustStatistics() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center p-6 rounded-lg border border-gray-200 bg-gray-50">
-              <p className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              <p className="text-3xl md:text-4xl font-bold mb-2" style={{color:"red"}}>
                 {stat.number}
               </p>
               <p className="text-muted-foreground">{stat.label}</p>

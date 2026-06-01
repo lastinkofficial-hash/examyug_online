@@ -15,7 +15,7 @@ export function AnnouncementBar() {
             key={index}
             className="flex-shrink-0 px-4 flex items-center justify-center"
           >
-            <p className="text-dark text-center font-medium">
+            <p className="text-yellow-300 text-center font-bold">
               {item.title}
             </p>
           </div>

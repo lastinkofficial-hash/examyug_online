@@ -28,8 +28,8 @@ export function FeaturedCourses() {
             <Button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              variant={selectedCategory === category ? 'default' : 'outline'}
-              className={selectedCategory === category ? 'bg-primary hover:bg-primary/90' : ''}
+              variant={selectedCategory === category ? 'destructive' : 'outline'}
+              className={selectedCategory === category ? 'hover:bg-primary/90' : ''}
             >
               {category}
             </Button>

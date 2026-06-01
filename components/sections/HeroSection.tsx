@@ -9,14 +9,14 @@ export function HeroSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Our Latest <span className="text-primary">Announcements</span>
+              Our Latest <span className="text-accent">Announcements</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
               Learn from expert instructors with personalized courses and study materials designed to help you excel in every subject.
             </p>
             
           </div>
-          <div className=" ">
+          <div className="bg-primary">
               <AnnouncementSection />
           </div>
         </div>

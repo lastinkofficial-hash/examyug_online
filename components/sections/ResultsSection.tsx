@@ -6,7 +6,7 @@ export default function ResultsSection() {
   return (
     <div id="results" className="py-20 bg-white">
       <h1 className="text-center text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Student <span className="text-primary">Results</span>
+              Student <span className="text-accent">Results</span>
             </h1>
       <p className="text-lg text-center mb-8">Motion results reflect the passion, hard work and efforts of our students, so far,
 we have acquired remarkable selection ratios in competitive exams.</p>

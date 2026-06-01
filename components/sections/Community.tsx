@@ -26,7 +26,7 @@ export function Community() {
 
           <div className="bg-background rounded-lg p-8 text-center">
             <div className="inline-block p-3 bg-accent bg-opacity-10 rounded-lg mb-4">
-              <Users className="w-6 h-6 text-accent" />
+              <Users className="w-6 h-6 text-yellow-300" />
             </div>
             <h3 className="font-semibold text-foreground mb-2 text-lg">Study Groups</h3>
             <p className="text-muted-foreground mb-4">

@@ -22,13 +22,13 @@ const announcements = [
 
 export default function AnnouncementSection() {
   return (
-    <div className="bg-blue-50 border-b border-blue-200 py-4 overflow-hidden relative">
+    <div className="bg-accent border-b border-blue-200 py-4 overflow-hidden relative">
       {/* Marquee wrapper */}
       <div className="animate-marquee space-y-3">
         {announcements.map((item, index) => (
           <p
             key={index}
-            className="mx-5 text-blue-700 font-medium"
+            className="mx-5 text-yellow-300 font-medium"
           >
             {item.date}: {item.title} — {item.desc} 
           </p>

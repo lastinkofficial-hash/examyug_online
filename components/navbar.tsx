@@ -32,10 +32,10 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex gap-3">
-            <button className="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
+            <button className="outline">
               Sign In
             </button>
-            <button className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors">
+            <button className="bg-primary hover:bg-primary/90">
               Get Started
             </button>
           </div>
