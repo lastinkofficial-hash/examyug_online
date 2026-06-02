@@ -23,7 +23,6 @@ export function Navbar({ active }: NavbarProps) {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/study-materials", label: "Study Materials" },
-    { href: "/results", label: "Results" },
     { href: "/about-us", label: "About Us" },
     { href: "/contact-us", label: "Contact Us" },
   ];
@@ -111,23 +110,28 @@ export function Navbar({ active }: NavbarProps) {
           </DropdownMenu>
 
           {/* Search */}
-          <Input
-            type="text"
-            placeholder="Search courses..."
-            className="hidden xl:block w-[220px] focus-visible:ring-primary"
-          />
+          <Link href="/search">
+            <Input
+              type="text"
+              placeholder="Search courses..."
+              className="hidden xl:block w-[220px] focus-visible:ring-primary cursor-pointer"
+              readOnly
+            />
+          </Link>
         </div>
 
         {/* Right Side */}
         <div className="flex items-center gap-3">
 
           {/* Desktop Buttons */}
-          <Button
-            variant="outline"
-            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
-          >
-            Login
-          </Button>
+          <Link href="/login">
+            <Button
+              variant="outline"
+              className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
+            >
+              Login
+            </Button>
+          </Link>
 
           <Button
             variant="destructive"
@@ -198,20 +202,25 @@ export function Navbar({ active }: NavbarProps) {
           </div>
 
           {/* Mobile Search */}
-          <Input
-            type="text"
-            placeholder="Search courses..."
-            className="w-full focus-visible:ring-primary"
-          />
+          <Link href="/search" className="w-full">
+            <Input
+              type="text"
+              placeholder="Search courses..."
+              className="w-full focus-visible:ring-primary cursor-pointer"
+              readOnly
+            />
+          </Link>
 
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3">
-            <Button
-              variant="outline"
-              className="w-full hover:scale-[1.02] transition-transform duration-300"
-            >
-              Login
-            </Button>
+            <Link href="/login" className="w-full">
+              <Button
+                variant="outline"
+                className="w-full hover:scale-[1.02] transition-transform duration-300"
+              >
+                Login
+              </Button>
+            </Link>
 
             <Button
               variant="default"
