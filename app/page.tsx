@@ -1,3 +1,5 @@
+'use client';
+
 import { Navbar } from '@/components/sections/Navbar';
 import { AnnouncementBar } from '@/components/sections/AnnouncementBar';
 import { TrustStatistics } from '@/components/sections/TrustStatistics';
@@ -14,12 +16,17 @@ import { Footer } from '@/components/sections/Footer';
 import HeroCrousel from '@/components/sections/HeroCrousel';
 import AnnouncementSection from '@/components/sections/AnnouncementSection';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { LoginModal } from '@/components/LoginModal';
+import { useState } from 'react';
 
 export default function Page() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   return (
     <main className="bg-background">
       <AnnouncementBar />
-      <Navbar />
+      <Navbar onLoginClick={() => setIsLoginModalOpen(true)} />
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
       <HeroCrousel />
       <TrustStatistics />
       <FeaturedCourses />

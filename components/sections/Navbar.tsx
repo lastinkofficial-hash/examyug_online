@@ -15,9 +15,10 @@ import Link from "next/link";
 
 type NavbarProps = {
   active?: string;
+  onLoginClick?: () => void;
 };
 
-export function Navbar({ active }: NavbarProps) {
+export function Navbar({ active, onLoginClick }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -124,14 +125,13 @@ export function Navbar({ active }: NavbarProps) {
         <div className="flex items-center gap-3">
 
           {/* Desktop Buttons */}
-          <Link href="/login">
-            <Button
-              variant="outline"
-              className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
-            >
-              Login
-            </Button>
-          </Link>
+          <Button
+            onClick={onLoginClick}
+            variant="outline"
+            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
+          >
+            Login
+          </Button>
 
           <Button
             variant="destructive"
@@ -213,14 +213,13 @@ export function Navbar({ active }: NavbarProps) {
 
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3">
-            <Link href="/login" className="w-full">
-              <Button
-                variant="outline"
-                className="w-full hover:scale-[1.02] transition-transform duration-300"
-              >
-                Login
-              </Button>
-            </Link>
+            <Button
+              onClick={onLoginClick}
+              variant="outline"
+              className="w-full hover:scale-[1.02] transition-transform duration-300"
+            >
+              Login
+            </Button>
 
             <Button
               variant="default"
