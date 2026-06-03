@@ -16,7 +16,7 @@ export function HeroSection() {
             </p>
             
           </div>
-          <div className="">
+          <div className="bg-primary">
               <AnnouncementSection />
           </div>
         </div>

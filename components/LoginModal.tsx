@@ -12,28 +12,20 @@ interface LoginModalProps {
 }
 
 export function LoginModal({ isOpen, onClose }: LoginModalProps) {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     console.log('Login attempt:', formData);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+    setTimeout(() => setIsLoading(false), 1500);
   };
 
   if (!isOpen) return null;
@@ -47,11 +39,14 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
       />
 
       {/* Modal */}
-      <div className="relative w-full max-w-md mx-4 bg-white rounded-lg shadow-lg p-8 md:p-10 animate-in fade-in zoom-in-95">
+      <div
+        className="relative w-full max-w-md mx-4 bg-white rounded-lg shadow-lg p-8 md:p-10 animate-in fade-in zoom-in-95"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-md transition-colors duration-300"
+          className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-md transition-colors duration-300 focus:outline-none"
         >
           <X className="w-5 h-5 text-foreground" />
         </button>
@@ -104,23 +99,19 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-muted-foreground hover:text-foreground"
+                className="absolute right-3 top-3 p-0 text-muted-foreground hover:text-foreground focus:outline-none"
               >
-                {showPassword ? (
-                  <EyeOff className="w-5 h-5" />
-                ) : (
-                  <Eye className="w-5 h-5" />
-                )}
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
             </div>
           </div>
 
           {/* Remember & Forgot */}
           <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" className="rounded border-border" />
-              <span className="text-sm text-muted-foreground">Remember me</span>
-            </label>
+            <div className="flex items-center gap-2">
+              <input id="remember" type="checkbox" className="rounded border-border" />
+              <label htmlFor="remember" className="text-sm text-muted-foreground">Remember me</label>
+            </div>
             <Link
               href="/forgot-password"
               onClick={onClose}
@@ -134,7 +125,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full py-6 hover:scale-105 transition-transform duration-300 disabled:opacity-50"
+            className="w-full py-6 hover:scale-105 transition-transform duration-300 disabled:opacity-50 focus:outline-none"
           >
             {isLoading ? 'Signing in...' : 'Sign In'}
           </Button>
@@ -152,18 +143,10 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
         {/* Social Login */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <Button
-            type="button"
-            variant="outline"
-            className="hover:bg-primary/10 transition-colors duration-300"
-          >
+          <Button type="button" variant="outline" className="hover:bg-primary/10 transition-colors duration-300">
             Google
           </Button>
-          <Button
-            type="button"
-            variant="outline"
-            className="hover:bg-primary/10 transition-colors duration-300"
-          >
+          <Button type="button" variant="outline" className="hover:bg-primary/10 transition-colors duration-300">
             GitHub
           </Button>
         </div>
