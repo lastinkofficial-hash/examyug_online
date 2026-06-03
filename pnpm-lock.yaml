@@ -163,10 +163,10 @@ importers:
         version: 3.6.0
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.2.0)
+        version: 1.0.7(tailwindcss@4.3.0)
       tailwindcss-react-aria-components:
         specifier: ^2.1.0
-        version: 2.1.0(tailwindcss@4.2.0)
+        version: 2.1.0(tailwindcss@4.3.0)
       vaul:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -191,7 +191,7 @@ importers:
         version: 8.5.6
       tailwindcss:
         specifier: ^4.2.0
-        version: 4.2.0
+        version: 4.3.0
       tw-animate-css:
         specifier: 1.3.3
         version: 1.3.3
@@ -1824,6 +1824,9 @@ packages:
   tailwindcss@4.2.0:
     resolution: {integrity: sha512-yYzTZ4++b7fNYxFfpnberEEKu43w44aqDMNM9MHMmcKuCH7lL8jJ4yJ7LGHv7rSwiqM0nkiobF9I6cLlpS2P7Q==}
 
+  tailwindcss@4.3.0:
+    resolution: {integrity: sha512-y6nxMGB1nMW9R6k96e5gdIFzcfL/gTJRNaqGes1YvkLnPVXzWgbqFF2yLC0T8G774n24cx3Pe8XrKoniCOAH+Q==}
+
   tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
     engines: {node: '>=6'}
@@ -3423,15 +3426,17 @@ snapshots:
 
   tailwind-merge@3.6.0: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@4.2.0):
+  tailwindcss-animate@1.0.7(tailwindcss@4.3.0):
     dependencies:
-      tailwindcss: 4.2.0
+      tailwindcss: 4.3.0
 
-  tailwindcss-react-aria-components@2.1.0(tailwindcss@4.2.0):
+  tailwindcss-react-aria-components@2.1.0(tailwindcss@4.3.0):
     dependencies:
-      tailwindcss: 4.2.0
+      tailwindcss: 4.3.0
 
   tailwindcss@4.2.0: {}
+
+  tailwindcss@4.3.0: {}
 
   tapable@2.3.0: {}
 
