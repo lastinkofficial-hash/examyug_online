@@ -1,27 +1,23 @@
 "use client";
 
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
 type NavbarProps = {
   active?: string;
+  onLoginClick?: () => void;
 };
 
-export function Navbar({ active }: NavbarProps) {
+export function Navbar({ active, onLoginClick }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { href: "/", label: "Home" },
+    { href: "/courses", label: "Courses" },
     { href: "/study-materials", label: "Study Materials" },
     { href: "/about-us", label: "About Us" },
     { href: "/contact-us", label: "Contact Us" },
@@ -49,65 +45,22 @@ export function Navbar({ active }: NavbarProps) {
         <div className="hidden min-[986px]:flex items-center gap-6">
 
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
-              className={`text-dark hover:text-red-500 font-bold hover:text-red-500 ${
+              className={`font-bold transition-all duration-300 relative group ${
                 active === item.href
                   ? "text-accent"
-                  : "text-foreground"
-              
-                } `}
-              style={{ textDecoration:"none"} }
+                  : "text-foreground hover:text-accent"
+              }`}
+              style={{color: "red !important", textDecoration = "none"}}
             >
               {item.label}
-            </a>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           ))}
 
-          {/* Courses Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger className="relative flex items-center gap-1 text-[15px] font-medium text-foreground no-underline transition-all duration-300 hover:text-primary outline-none">
-              <span className="text-dark hover:text-red-500 font-bold">
-                Courses
-              </span>
 
-              <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
-            </DropdownMenuTrigger>
-
-            <DropdownMenuContent className="w-64">
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                Data Science & Analytics
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                Digital Marketing With AI
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                Software Development
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                Placement Program
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                Banking & Finance
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                DSA Courses
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                Generative AI
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="cursor-pointer hover:bg-primary/10">
-                Project Garage
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
 
           {/* Search */}
           <Link href="/search">
@@ -124,21 +77,20 @@ export function Navbar({ active }: NavbarProps) {
         <div className="flex items-center gap-3">
 
           {/* Desktop Buttons */}
-          <Link href="/login">
+          <Button
+            variant="outline"
+            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
+          >
+            Login
+          </Button>
+
+          <Link href="/signup">
             <Button
-              variant="outline"
               className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
             >
-              Login
+              Sign Up
             </Button>
           </Link>
-
-          <Button
-            variant="destructive"
-            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300 hover:bg-primary/90"
-          >
-            Sign Up
-          </Button>
 
           {/* Mobile Toggle */}
           <button
@@ -174,32 +126,7 @@ export function Navbar({ active }: NavbarProps) {
             </Link>
           ))}
 
-          {/* Mobile Courses */}
-          <div className="space-y-2 pt-2 border-t border-border">
-            <p className="font-semibold text-foreground">
-              Courses
-            </p>
 
-            <div className="flex flex-col gap-2 text-sm">
-              {[
-                "Data Science & Analytics",
-                "Digital Marketing With AI",
-                "Software Development",
-                "Placement Program",
-                "Banking & Finance",
-                "DSA Courses",
-                "Generative AI",
-                "Project Garage",
-              ].map((course, index) => (
-                <span
-                  key={index}
-                  className="cursor-pointer text-muted-foreground hover:text-primary transition-colors duration-300"
-                >
-                  {course}
-                </span>
-              ))}
-            </div>
-          </div>
 
           {/* Mobile Search */}
           <Link href="/search" className="w-full">
@@ -213,21 +140,20 @@ export function Navbar({ active }: NavbarProps) {
 
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3">
-            <Link href="/login" className="w-full">
-              <Button
-                variant="outline"
-                className="w-full hover:scale-[1.02] transition-transform duration-300"
-              >
-                Login
-              </Button>
-            </Link>
-
             <Button
-              variant="default"
+              variant="outline"
               className="w-full hover:scale-[1.02] transition-transform duration-300"
             >
-              Sign Up
+              Login
             </Button>
+
+            <Link href="/signup" className="w-full">
+              <Button
+                className="w-full hover:scale-[1.02] transition-transform duration-300"
+              >
+                Sign Up
+              </Button>
+            </Link>
           </div>
         </div>
       )}
