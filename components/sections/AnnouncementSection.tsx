@@ -28,7 +28,7 @@ export default function AnnouncementSection() {
         {announcements.map((item, index) => (
           <p
             key={index}
-            className="mx-5 text-yellow-300 font-medium text-center"
+            className="mx-5 text-yellow-300 font-medium"
           >
             {item.date}: {item.title} — {item.desc} 
           </p>
