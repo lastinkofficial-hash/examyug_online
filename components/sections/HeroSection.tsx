@@ -4,7 +4,7 @@ import AnnouncementSection from './AnnouncementSection';
 
 export function HeroSection() {
   return (
-    <section id="" className="bg-dark from-background to-white py-20 md:py-32 border border-rounded">
+    <section id="" className="bg-gradient-to-b from-background to-white py-20 md:py-32 border border-rounded">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
