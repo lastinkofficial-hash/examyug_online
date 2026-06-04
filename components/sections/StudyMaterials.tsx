@@ -309,6 +309,7 @@ export function StudyMaterials() {
                   </div>
 
                   <Button
+                    variant="outline"
                     size="sm"
                     onClick={() =>
                       window.open(
