@@ -74,7 +74,7 @@ export default function CoursesPage(){
           <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
             <div className="w-full md:w-auto flex-1 md:flex-none md:min-w-64">
               <div className="relative">
-                <Search className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                <Search className="absolute left-3 right-3 top-3 w-5 h-5 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder="Search courses..."
@@ -90,7 +90,7 @@ export default function CoursesPage(){
                 <Button
                   key={level}
                   onClick={() => setSelectedLevel(level)}
-                  variant={selectedLevel === level ? 'default' : 'outline'}
+                  variant={selectedLevel === level ? 'destructive' : 'outline'}
                   className="transition-all duration-300"
                 >
                   {level.charAt(0).toUpperCase() + level.slice(1)}
@@ -158,17 +158,19 @@ export default function CoursesPage(){
               
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <span className="text-sm line-through text-muted-foreground">
+                      <span className="font-bold line-through text-muted-foreground">
                         ₹{course.maxPrice}
                       </span>
                     </div>
               
-                    <span className="text-xl font-bold text-primary">
+                    <span className="text-xl font-bold text-accent">
                       ₹{course.sellingPrice}
                     </span>
                   </div>
               
-                  <Button className="w-full">
+                  <Button 
+                    className="w-full"
+                    variant="outline">
                     View Course
                   </Button>
                 </div>
