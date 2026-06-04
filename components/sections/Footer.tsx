@@ -44,7 +44,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <a style={{textDecoration = "none"}} href="tel:+18001234567">+1 (800) 123-4567</a>
+                <a style={{textDecoration: "none"}} href="tel:+18001234567">+1 (800) 123-4567</a>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />

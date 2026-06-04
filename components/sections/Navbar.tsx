@@ -142,8 +142,6 @@ export function Navbar({ active, onLoginClick }: NavbarProps) {
               readOnly
             />
           </Link>
-          
-          <p></p>
 
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3">
