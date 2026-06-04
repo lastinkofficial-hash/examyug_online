@@ -339,12 +339,12 @@ export function StudyMaterials() {
           <Button
             variant="outline"
             size="lg"
-            className="gap-2"
+            className="gap-2 mb-10"
             onClick={() => {
               window.location.href = '/study-materials';
             }}
           >
-            View More Courses
+            View More
           </Button>
         </div>
 
