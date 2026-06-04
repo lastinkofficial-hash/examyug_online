@@ -8,7 +8,7 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-light mb-6 leading-tight">
               Our Latest <span className="text-accent">Announcements</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
@@ -16,7 +16,7 @@ export function HeroSection() {
             </p>
             
           </div>
-          <div className="bg-primary">
+          <div className="">
               <AnnouncementSection />
           </div>
         </div>
