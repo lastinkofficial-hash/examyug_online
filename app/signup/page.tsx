@@ -156,7 +156,6 @@ export default function SignUpPage() {
                         errors.firstName ? 'border-red-500' : ''
                       }`}
                     />
-                    <User className="absolute left-3 right-3 top-3 w-5 h-5 text-muted-foreground" />
                   </div>
                   {errors.firstName && (
                     <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
@@ -180,7 +179,6 @@ export default function SignUpPage() {
                         errors.lastName ? 'border-red-500' : ''
                       }`}
                     />
-                    <User className="absolute left-3 right-3 top-3 w-5 h-5 text-muted-foreground" />
                   </div>
                   {errors.lastName && (
                     <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
@@ -229,7 +227,6 @@ export default function SignUpPage() {
                       errors.phone ? 'border-red-500' : ''
                     }`}
                   />
-                  <Phone className="absolute left-3 right-3 top-3 w-5 h-5 text-muted-foreground" />
                 </div>
                 {errors.phone && (
                   <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
@@ -253,7 +250,6 @@ export default function SignUpPage() {
                       errors.address ? 'border-red-500' : ''
                     }`}
                   />
-                  <MapPin className="absolute  right-3 left-3 top-3 w-5 h-5 text-muted-foreground" />
                 </div>
                 {errors.address && (
                   <p className="text-red-500 text-xs mt-1">{errors.address}</p>
@@ -279,7 +275,6 @@ export default function SignUpPage() {
                         errors.password ? 'border-red-500' : ''
                       }`}
                     />
-                    <Lock className="absolute right-3 left-3 top-3 w-5 h-5 text-muted-foreground" />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
@@ -314,7 +309,6 @@ export default function SignUpPage() {
                         errors.confirmPassword ? 'border-red-500' : ''
                       }`}
                     />
-                    <Lock className="absolute right-3 left-3 top-3 w-5 h-5 text-muted-foreground" />
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
