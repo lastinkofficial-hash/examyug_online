@@ -75,7 +75,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 className="pl-10 focus-visible:ring-primary"
                 required
               />
-              <Mail className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+              
             </div>
           </div>
 
@@ -95,7 +95,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 className="pl-10 pr-10 focus-visible:ring-primary"
                 required
               />
-              <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+             
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -139,16 +139,6 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
           <div className="relative flex justify-center text-sm">
             <span className="px-2 bg-white text-muted-foreground">Or continue with</span>
           </div>
-        </div>
-
-        {/* Social Login */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <Button type="button" variant="outline" className="hover:bg-primary/10 transition-colors duration-300">
-            Google
-          </Button>
-          <Button type="button" variant="outline" className="hover:bg-primary/10 transition-colors duration-300">
-            GitHub
-          </Button>
         </div>
 
         {/* Sign Up Link */}

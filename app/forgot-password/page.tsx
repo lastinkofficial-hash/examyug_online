@@ -129,8 +129,7 @@ export default function ForgotPassword() {
 
   return (
     <main className="bg-background">
-      <AnnouncementBar />
-      <Navbar />
+      
 
       <section className="min-h-[calc(100vh-300px)] flex items-center justify-center px-4 py-16">
         <div className="w-full max-w-md">
@@ -259,7 +258,7 @@ export default function ForgotPassword() {
                       className="pl-10 pr-10 focus-visible:ring-primary"
                       required
                     />
-                    <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                    
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
@@ -291,7 +290,7 @@ export default function ForgotPassword() {
                       className="pl-10 pr-10 focus-visible:ring-primary"
                       required
                     />
-                    <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                    
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}

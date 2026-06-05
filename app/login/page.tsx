@@ -67,7 +67,7 @@ export default function Login() {
                     className="pl-10 focus-visible:ring-primary"
                     required
                   />
-                  <Mail className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                  
                 </div>
               </div>
 

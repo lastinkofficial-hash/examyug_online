@@ -91,6 +91,7 @@ export function Navbar({ active, onLoginClick }: NavbarProps) {
 
           <Link href="/signup">
             <Button
+              variant="destructive"
               className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
             >
               Sign Up
@@ -156,13 +157,14 @@ export function Navbar({ active, onLoginClick }: NavbarProps) {
               Login
             </Button>
 
-            <Link href="/signup" className="w-full">
-              <Button
-                className="w-full hover:scale-[1.02] transition-transform duration-300"
-              >
-                Sign Up
-              </Button>
-            </Link>
+            <Button
+              className="w-full hover:scale-[1.02] duration-300"
+              variant="outline"
+            >
+              <Link href="/signup" className="w-full">
+              Sign Up
+              </Link>
+            </Button>
           </div>
         </div>
       )}

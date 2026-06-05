@@ -168,7 +168,7 @@ export default function StudyMaterials() {
               key={category.id}
               variant={
                 selectedBookCategory === category.id
-                  ? 'default'
+                  ? 'destructive'
                   : 'outline'
               }
               onClick={() =>
@@ -223,6 +223,7 @@ export default function StudyMaterials() {
 
                   <Button
                     size="sm"
+                    variant="outline"
                     onClick={() =>
                       window.open(material.bookPdf, '_blank')
                     }
@@ -256,7 +257,7 @@ export default function StudyMaterials() {
               key={category.id}
               variant={
                 selectedBooksetCategory === category.id
-                  ? 'default'
+                  ? 'destructive'
                   : 'outline'
               }
               onClick={() =>
@@ -311,6 +312,7 @@ export default function StudyMaterials() {
 
                   <Button
                     size="sm"
+                    variant="outline"
                     onClick={() =>
                       window.open(
                         bookset.booksetPdf ||
