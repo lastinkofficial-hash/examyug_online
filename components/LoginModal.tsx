@@ -75,7 +75,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 className="pl-10 focus-visible:ring-primary"
                 required
               />
-              <Mail className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+              
             </div>
           </div>
 
@@ -95,7 +95,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 className="pl-10 pr-10 focus-visible:ring-primary"
                 required
               />
-              <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+             
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
