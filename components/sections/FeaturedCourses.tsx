@@ -104,7 +104,7 @@ export function FeaturedCourses() {
         {/* Category Filter */}
         <div className="mb-12 flex justify-center">
           <div
-            className="flex gap-3 overflow-x-auto pb-2"
+            className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-primary/40 scrollbar-track-transparent pb-2 px-1 max-w-full"
             style={{
               maxWidth: '900px',
             }}
