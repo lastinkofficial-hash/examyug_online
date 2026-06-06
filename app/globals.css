@@ -150,3 +150,12 @@
   white-space: nowrap;
   animation: marquee-left-to-right 15s linear infinite;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
