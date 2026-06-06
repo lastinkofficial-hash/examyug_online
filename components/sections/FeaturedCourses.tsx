@@ -117,55 +117,55 @@ export function FeaturedCourses() {
 
         {/* Category Filter */}
         <div className="mb-12">
-  <div className="flex items-center gap-2">
-
-    {/* Previous Button */}
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={() => scrollCategories('left')}
-      className="shrink-0 rounded-full"
-    >
-      <ChevronLeft className="h-4 w-4" />
-    </Button>
-
-    {/* Categories */}
-    <div
-      ref={categoryRef}
-      className="flex gap-3 overflow-x-auto scroll-smooth no-scrollbar flex-1"
-    >
-      {categories.map((category) => (
-        <Button
-          key={String(category)}
-          onClick={() => setSelectedCategory(String(category))}
-          variant={
-            selectedCategory === category
-              ? 'destructive'
-              : 'outline'
-          }
-          className={`whitespace-nowrap shrink-0 ${
-            selectedCategory === category
-              ? 'hover:bg-primary/90'
-              : ''
-          }`}
-        >
-          {category}
-        </Button>
-      ))}
-    </div>
-
-    {/* Next Button */}
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={() => scrollCategories('right')}
-      className="shrink-0 rounded-full"
-    >
-      <ChevronRight className="h-4 w-4" />
-    </Button>
-
-  </div>
-</div>
+          <div className="flex items-center gap-2">
+        
+            {/* Previous Button */}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scrollCategories('left')}
+              className="shrink-0 rounded-full"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+        
+            {/* Categories */}
+            <div
+              ref={categoryRef}
+              className="flex gap-3 overflow-x-auto scroll-smooth no-scrollbar flex-1"
+            >
+              {categories.map((category) => (
+                <Button
+                  key={String(category)}
+                  onClick={() => setSelectedCategory(String(category))}
+                  variant={
+                    selectedCategory === category
+                      ? 'destructive'
+                      : 'outline'
+                  }
+                  className={`whitespace-nowrap shrink-0 ${
+                    selectedCategory === category
+                      ? 'hover:bg-primary/90'
+                      : ''
+                  }`}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+        
+            {/* Next Button */}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scrollCategories('right')}
+              className="shrink-0 rounded-full"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+        
+          </div>
+        </div>
 
         {/* Courses Grid */}
         {displayedCourses.length > 0 ? (
@@ -179,7 +179,7 @@ export function FeaturedCourses() {
                 }
                 students={0}
                 rating={5}
-                price={`₹${course.sellingPrice}`}
+                price={`₹{course.sellingPrice}`}
                 image={course.thumbnail}
               />
             ))}
