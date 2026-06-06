@@ -179,7 +179,7 @@ export function FeaturedCourses() {
                 }
                 students={0}
                 rating={5}
-                price=₹{course.sellingPrice}
+                price={₹{course.sellingPrice}}
                 image={course.thumbnail}
               />
             ))}
