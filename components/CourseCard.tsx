@@ -37,7 +37,7 @@ export function CourseCard({
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="text-xl font-bold text-accent">${price}</span>
+          <span className="text-xl font-bold text-accent">₹{price}</span>
           <Button size="sm" variant="outline">Learn More</Button>
         </div>
       </div>
