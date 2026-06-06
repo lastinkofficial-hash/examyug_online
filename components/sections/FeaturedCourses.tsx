@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CourseCard } from '@/components/CourseCard';
 import { Button } from '@/components/ui/button';
 
@@ -23,6 +24,19 @@ export function FeaturedCourses() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const categoryRef = useRef<HTMLDivElement>(null);
+
+  const scrollCategories = (direction: 'left' | 'right') => {
+    if (!categoryRef.current) return;
+  
+    const scrollAmount = 300;
+  
+    categoryRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -102,33 +116,56 @@ export function FeaturedCourses() {
         </div>
 
         {/* Category Filter */}
-        <div className="mb-12 flex justify-center">
-          <div
-            className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-primary/40 scrollbar-track-transparent pb-2 px-1 max-w-full"
-            style={{
-              maxWidth: '900px',
-            }}
-          >
-            {categories.map((category) => (
-              <Button
-                key={String(category)}
-                onClick={() => setSelectedCategory(String(category))}
-                variant={
-                  selectedCategory === category
-                    ? 'destructive'
-                    : 'outline'
-                }
-                className={`whitespace-nowrap flex-shrink-0 ${
-                  selectedCategory === category
-                    ? 'hover:bg-primary/90'
-                    : ''
-                }`}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-        </div>
+        <div className="mb-12">
+  <div className="flex items-center gap-2">
+
+    {/* Previous Button */}
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={() => scrollCategories('left')}
+      className="shrink-0 rounded-full"
+    >
+      <ChevronLeft className="h-4 w-4" />
+    </Button>
+
+    {/* Categories */}
+    <div
+      ref={categoryRef}
+      className="flex gap-3 overflow-x-auto scroll-smooth no-scrollbar flex-1"
+    >
+      {categories.map((category) => (
+        <Button
+          key={String(category)}
+          onClick={() => setSelectedCategory(String(category))}
+          variant={
+            selectedCategory === category
+              ? 'destructive'
+              : 'outline'
+          }
+          className={`whitespace-nowrap shrink-0 ${
+            selectedCategory === category
+              ? 'hover:bg-primary/90'
+              : ''
+          }`}
+        >
+          {category}
+        </Button>
+      ))}
+    </div>
+
+    {/* Next Button */}
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={() => scrollCategories('right')}
+      className="shrink-0 rounded-full"
+    >
+      <ChevronRight className="h-4 w-4" />
+    </Button>
+
+  </div>
+</div>
 
         {/* Courses Grid */}
         {displayedCourses.length > 0 ? (
