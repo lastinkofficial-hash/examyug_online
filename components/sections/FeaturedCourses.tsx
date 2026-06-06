@@ -102,25 +102,32 @@ export function FeaturedCourses() {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-3 justify-center mb-12">
-          {categories.map((category) => (
-            <Button
-              key={String(category)}
-              onClick={() => setSelectedCategory(String(category))}
-              variant={
-                selectedCategory === category
-                  ? 'destructive'
-                  : 'outline'
-              }
-              className={
-                selectedCategory === category
-                  ? 'hover:bg-primary/90'
-                  : ''
-              }
-            >
-              {category}
-            </Button>
-          ))}
+        <div className="mb-12 flex justify-center">
+          <div
+            className="flex gap-3 overflow-x-auto pb-2"
+            style={{
+              maxWidth: '900px',
+            }}
+          >
+            {categories.map((category) => (
+              <Button
+                key={String(category)}
+                onClick={() => setSelectedCategory(String(category))}
+                variant={
+                  selectedCategory === category
+                    ? 'destructive'
+                    : 'outline'
+                }
+                className={`whitespace-nowrap flex-shrink-0 ${
+                  selectedCategory === category
+                    ? 'hover:bg-primary/90'
+                    : ''
+                }`}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
         </div>
 
         {/* Courses Grid */}
