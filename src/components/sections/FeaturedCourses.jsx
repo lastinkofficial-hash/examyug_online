@@ -1,0 +1,148 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { CourseCard } from '../components/CourseCard';
+import Button from '../ui/button';
+
+export default function FeaturedCourses() {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(
+          'https://examyug-dashboard-backend.onrender.com/api/v1/course/view-all-courses?page=1&limit=50'
+        );
+        const data = await response.json();
+        console.log('Courses API Response:', data);
+
+        if (data?.success) {
+          // Show only featured/display courses
+          const featuredCourses = (data.allCourses || []).filter(
+            (course) =>
+              course.featured?.toLowerCase() === 'yes' ||
+              course.courseDisplay?.toLowerCase() === 'yes'
+          );
+          setCourses(featuredCourses);
+        }
+      } catch (error) {
+        console.error('Error fetching featured courses:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  const categories = [
+    'All',
+    ...Array.from(
+      new Set(
+        courses
+          .map((course) => course.category?.categoryTitle)
+          .filter(Boolean)
+      )
+    ),
+  ];
+
+  const displayedCourses =
+    selectedCategory === 'All'
+      ? courses
+      : courses.filter((course) => course.category?.categoryTitle === selectedCategory);
+
+  if (loading) {
+    return (
+      <section id="courses" className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-lg text-muted-foreground">
+            Loading featured courses...
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="courses" className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Section Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Featured Courses
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Choose from our wide range of expertly curated courses
+          </p>
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-3 justify-center mb-12">
+          {categories.map((category) => (
+            <Button
+              key={String(category)}
+              onClick={() => setSelectedCategory(String(category))}
+              variant={selectedCategory === category ? 'destructive' : 'outline'}
+              className={selectedCategory === category ? 'hover:bg-primary/90' : ''}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+
+        {/* Courses Grid */}
+        {displayedCourses.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {displayedCourses.slice(0, 6).map((course) => (
+              <CourseCard
+                key={course._id}
+                title={course.courseTitle}
+                instructor={course.category?.categoryTitle || 'Examyug'}
+                students={0}
+                rating={5}
+                price={`₹${course.sellingPrice}`}
+                image={course.thumbnail}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-10">
+            <p className="text-muted-foreground">No featured courses found.</p>
+          </div>
+        )}
+
+        {/* View More Button */}
+        <div className="text-center">
+          <Button
+            variant="outline"
+            size="lg"
+            className="gap-2"
+            onClick={() => {
+              window.location.href = '/courses';
+            }}
+          >
+            View More Courses
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+FeaturedCourses.propTypes = {
+  _id: PropTypes.string.isRequired,
+  courseTitle: PropTypes.string.isRequired,
+  courseDescription: PropTypes.string.isRequired,
+  sellingPrice: PropTypes.number.isRequired,
+  maxPrice: PropTypes.number,
+  thumbnail: PropTypes.string.isRequired,
+  featured: PropTypes.string,
+  courseDisplay: PropTypes.string,
+  category: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    categoryTitle: PropTypes.string.isRequired,
+  }),
+};
