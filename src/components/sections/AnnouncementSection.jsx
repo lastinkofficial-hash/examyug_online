@@ -22,7 +22,7 @@ const announcements = [
 
 export default function AnnouncementSection() {
   return (
-    <div className="bg-accent border-b border-blue-200 py-4 overflow-hidden relative">
+    <div className="bg-dark border-b border-blue-200 py-4 overflow-hidden relative">
     {/* Marquee wrapper */}
     <div className="animate-marquee space-y-3">
       {announcements.map((item, index) => (

@@ -48,7 +48,7 @@ export default function NewsletterSignup() {
 
           <Button
             type="submit"
-            className="bg-white text-primary hover:opacity-90 font-semibold"
+            className="bg-dark text-primary hover:opacity-90 font-semibold"
           >
             {isSubmitted ? "Subscribed!" : "Subscribe"}
           </Button>

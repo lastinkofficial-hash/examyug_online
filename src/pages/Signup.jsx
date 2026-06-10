@@ -69,7 +69,7 @@ export default function Signup() {
                     className="pl-10 focus-visible:ring-primary"
                     required
                   />
-                  <User className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                  {/* <User className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" /> */}
                 </div>
               </div>
 
@@ -88,7 +88,7 @@ export default function Signup() {
                     className="pl-10 focus-visible:ring-primary"
                     required
                   />
-                  <Mail className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                  {/* <Mail className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" /> */}
                 </div>
               </div>
 
@@ -107,7 +107,7 @@ export default function Signup() {
                     className="pl-10 pr-10 focus-visible:ring-primary"
                     required
                   />
-                  <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                  {/* <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" /> */}
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
@@ -137,7 +137,7 @@ export default function Signup() {
                     className="pl-10 pr-10 focus-visible:ring-primary"
                     required
                   />
-                  <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                  {/* <Lock className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" /> */}
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
