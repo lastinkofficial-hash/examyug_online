@@ -55,9 +55,9 @@ export default function FeaturedCourses() {
 
   if (loading) {
     return (
-      <section id="courses" className="py-5 bg-background">
-        <div className="container-lg d-d-flex justify-content-center px-3 text-center">
-          <p className="fs-6 text-muted-foreground">
+      <section id="courses" className="py-5" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container-lg px-3 text-center">
+          <p className="fs-6 text-muted">
             Loading featured courses...
           </p>
         </div>
@@ -66,26 +66,25 @@ export default function FeaturedCourses() {
   }
 
   return (
-    <section id="courses" className="py-5 bg-background">
-      <div className="container-lg d-d-flex justify-content-center px-3">
+    <section id="courses" className="py-5" style={{ backgroundColor: '#ffffff' }}>
+      <div className="container-lg px-3">
         {/* Section Heading */}
         <div className="text-center mb-5">
-          <h2 className="fs-3 md:display-5 fw-bold text-foreground mb-4">
+          <h2 className="fs-3 fs-md-1 fw-bold text-dark mb-4">
             Featured Courses
           </h2>
-          <p className="fs-6 text-muted-foreground">
+          <p className="fs-6 text-muted">
             Choose from our wide range of expertly curated courses
           </p>
         </div>
 
         {/* Category Filter */}
-        <div className="d-flex d-flex-wrap gap-3 justify-content-center mb-5">
+        <div className="d-flex flex-wrap gap-3 justify-content-center mb-5">
           {categories.map((category) => (
             <Button
               key={String(category)}
               onClick={() => setSelectedCategory(String(category))}
-              variant={selectedCategory === category ? 'destructive' : 'outline'}
-              className={selectedCategory === category ? 'hover:bg-primary/90' : ''}
+              variant={selectedCategory === category ? 'danger' : 'outline'}
             >
               {category}
             </Button>
@@ -94,22 +93,23 @@ export default function FeaturedCourses() {
 
         {/* Courses Grid */}
         {displayedCourses.length > 0 ? (
-          <div className="row md:row-cols-2 lg:row-cols-3 gap-4 mb-5">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mb-5">
             {displayedCourses.slice(0, 6).map((course) => (
-              <CourseCard
-                key={course._id}
-                title={course.courseTitle}
-                instructor={course.category?.categoryTitle || 'Examyug'}
-                students={0}
-                rating={5}
-                price={`₹${course.sellingPrice}`}
-                image={course.thumbnail}
-              />
+              <div key={course._id} className="col">
+                <CourseCard
+                  title={course.courseTitle}
+                  instructor={course.category?.categoryTitle || 'Examyug'}
+                  students={0}
+                  rating={5}
+                  price={`₹${course.sellingPrice}`}
+                  image={course.thumbnail}
+                />
+              </div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-10">
-            <p className="text-muted-foreground">No featured courses found.</p>
+          <div className="text-center py-5">
+            <p className="text-muted">No featured courses found.</p>
           </div>
         )}
 
@@ -118,7 +118,6 @@ export default function FeaturedCourses() {
           <Button
             variant="outline"
             size="lg"
-            className="gap-2"
             onClick={() => {
               window.location.href = '/courses';
             }}

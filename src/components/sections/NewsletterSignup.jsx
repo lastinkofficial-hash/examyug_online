@@ -21,21 +21,21 @@ export default function NewsletterSignup() {
   return (
     <section
       id="contact-us"
-      className="py-5 bg-red-500"
+      className="py-5"
+      style={{ backgroundColor: '#dc2626' }}
     >
-      <div className="max-w-3xl d-d-flex justify-content-center px-3 text-center">
-        <h2 className="fs-3 md:display-5 fw-bold text-white mb-4">
+      <div style={{ maxWidth: '768px', margin: '0 auto' }} className="px-3 text-center">
+        <h2 className="fs-3 fs-md-1 fw-bold text-white mb-4">
           Get the Latest Updates
         </h2>
 
-        <p className="fs-6 text-white/90 mb-5">
-          Subscribe to our newsletter for new courses, study tips, and
-          exclusive offers
+        <p className="fs-6 mb-5" style={{ color: 'rgba(255,255,255,0.9)' }}>
+          Subscribe to our newsletter for new courses, study tips, and exclusive offers
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="d-flex d-flex-column sm:d-flex-row gap-3 max-w-md d-d-flex justify-content-center"
+          className="d-flex flex-column flex-sm-row gap-3 justify-content-center"
         >
           <input
             type="email"
@@ -43,12 +43,13 @@ export default function NewsletterSignup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="d-flex-1 px-3 py-3 rounded-2 text-dark focus:outline-none focus:ring-2 focus:ring-white"
+            className="form-control rounded-2"
+            style={{ minWidth: '250px' }}
           />
 
           <Button
             type="submit"
-            className="bg-dark text-primary hover:opacity-90 fw-bold"
+            className="btn btn-dark fw-bold"
           >
             {isSubmitted ? "Subscribed!" : "Subscribe"}
           </Button>
