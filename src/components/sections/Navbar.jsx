@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import Button from '../ui/button';
+import Button  from '../ui/button';
 import Input from '../ui/input';
 import LoginModal from '../LoginModal';
 
@@ -19,75 +19,66 @@ export default function Navbar({ active, onLoginClick }) {
   ];
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top" style={{ zIndex: 50 }}>
-      <div className="container-lg">
+    <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         
         {/* Logo */}
-        <Link to="/" className="navbar-brand d-d-flex align-align-items-center gap-2">
+        <div className="flex items-center gap-2">
           <img
             src="/logo.jpeg"
             alt="ExamYug Logo"
             width="50"
             height="50"
-            className="rounded-circle"
+            className="block rounded-full"
           />
-          <span className="fw-bold" style={{ fontSize: "1.25rem" }}>
+          <span className="text-xl font-bold text-foreground">
             ExamYug24
           </span>
-        </Link>
+        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
-        </button>
+        {/* Desktop Navbar */}
+        <div className="hidden min-[986px]:flex items-center gap-6">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className={`font-bold transition-all duration-300 relative group ${
+                active === item.href
+                  ? "text-red-600"
+                  : "text-black hover:text-red-600"
+              }`}
+              style={{ textDecoration: "none" }}
+            >
+              {item.label}
 
-        {/* Menu */}
-        <div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show' : ''}`}>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            {navItems.map((item) => (
-              <li key={item.href} className="nav-item">
-                <Link
-                  to={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`nav-link fw-bold ${
-                    active === item.href
-                      ? "text-danger active"
-                      : ""
-                  }`}
-                  style={{ textDecoration: "none" }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 transition-all duration-300 ${
+                  active === item.href
+                    ? "w-full bg-red-600"
+                    : "w-0 bg-red-600 group-hover:w-full"
+                }`}
+              ></span>
+            </Link>
+          ))}
 
-          {/* Search - Desktop */}
-          <Link to="" className="d-none d-xl-d-block ms-3">
+          {/* Search */}
+          <Link to="" >
             <Input
               type="text"
               placeholder="Search courses..."
-              className="w-100"
-              style={{ width: "220px" }}
+              className="hidden xl:block w-[220px] cursor-pointer bg-white"
+              
             />
           </Link>
         </div>
 
-        {/* Right Side Buttons */}
-        <div className="d-d-flex gap-2 ms-3">
+        {/* Right Side */}
+        <div className="flex items-center gap-3">
           
           {/* Desktop Buttons */}
           <Button
             variant="outline"
-            className="d-none d-lg-inline-d-flex"
+            className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300"
             onClick={() => {
               setIsLoginModalOpen(true);
 
@@ -100,16 +91,61 @@ export default function Navbar({ active, onLoginClick }) {
           </Button>
 
           <Link to="/signup">
-            <Button className="d-none d-lg-inline-d-flex" variant="danger">
+            <Button className="hidden min-[986px]:inline-flex hover:scale-105 transition-transform duration-300" variant="danger">
               Sign Up
             </Button>
           </Link>
 
+          {/* Mobile Toggle */}
+          <button
+            className="min-[986px]:hidden p-2 rounded-md border border-border hover:bg-primary/10 transition-colors duration-300"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="min-[986px]:hidden bg-white border-t border-border px-4 py-4 space-y-4 shadow-md">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block text-[15px] font-medium transition-all duration-300 hover:translate-x-1 ${
+                active === item.href
+                  ? "text-red-600"
+                  : "text-black hover:text-red-600"
+              }`}
+              style={{ textDecoration: "none" }}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Mobile Search */}
+          <Link to="/search" className="w-full">
+            <Input
+              type="text"
+              placeholder="Search courses..."
+              className="w-full focus-visible:ring-primary cursor-pointer"
+              readOnly
+            />
+          </Link>
+
+          <p></p>
+
           {/* Mobile Buttons */}
-          <div className="d-lg-none d-d-flex d-flex-column gap-2">
+          <div className="flex flex-col gap-3">
             <Button
               variant="outline"
-              className="w-100"
+              className="w-full hover:scale-[1.02] transition-transform duration-300"
               onClick={() => {
                 setIsLoginModalOpen(true);
                 setMobileMenuOpen(false);
@@ -122,14 +158,14 @@ export default function Navbar({ active, onLoginClick }) {
               Login
             </Button>
 
-            <Link to="/signup" className="w-100">
-              <Button className="w-100" variant="danger">
+            <Link to="/signup" className="w-full">
+              <Button className="w-full hover:scale-[1.02] bg-accent duration-300">
                 Sign Up
               </Button>
             </Link>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Login Modal */}
       <LoginModal
