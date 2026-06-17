@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import Button  from '../ui/button';
+import Button from '../ui/button';
 import Input from '../ui/input';
 import LoginModal from '../LoginModal';
 
@@ -19,60 +19,69 @@ export default function Navbar({ active, onLoginClick }) {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top" style={{ zIndex: 50 }}>
+      <div className="container-lg">
         
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link to="/" className="navbar-brand d-d-flex align-align-items-center gap-2">
           <img
             src="/logo.jpeg"
             alt="ExamYug Logo"
             width="50"
             height="50"
-            className="block rounded-full"
+            className="rounded-circle"
           />
-          <span className="text-xl font-bold text-foreground">
+          <span className="fw-bold" style={{ fontSize: "1.25rem" }}>
             ExamYug24
           </span>
-        </div>
+        </Link>
 
-        {/* Desktop Navbar */}
-        <div className="hidden min-[986px]:flex items-center gap-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className={`font-bold transition-all duration-300 relative group ${
-                active === item.href
-                  ? "text-red-600"
-                  : "text-black hover:text-red-600"
-              }`}
-              style={{ textDecoration: "none" }}
-            >
-              {item.label}
+        {/* Mobile Toggle */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
 
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 transition-all duration-300 ${
-                  active === item.href
-                    ? "w-full bg-red-600"
-                    : "w-0 bg-red-600 group-hover:w-full"
-                }`}
-              ></span>
-            </Link>
-          ))}
+        {/* Menu */}
+        <div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show' : ''}`}>
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            {navItems.map((item) => (
+              <li key={item.href} className="nav-item">
+                <Link
+                  to={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`nav-link fw-bold ${
+                    active === item.href
+                      ? "text-danger active"
+                      : ""
+                  }`}
+                  style={{ textDecoration: "none" }}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-          {/* Search */}
-          <Link to="" >
+          {/* Search - Desktop */}
+          <Link to="" className="d-xl-d-block ms-3">
             <Input
               type="text"
               placeholder="Search courses..."
-              className="hidden xl:block w-[220px] cursor-pointer bg-white"
-              
+              className="w-100"
+              style={{ width: "220px" }}
             />
           </Link>
         </div>
 
-        {/* Right Side */}
+                {/* Right Side */}
         <div className="flex items-center gap-3">
           
           {/* Desktop Buttons */}
@@ -96,56 +105,11 @@ export default function Navbar({ active, onLoginClick }) {
             </Button>
           </Link>
 
-          {/* Mobile Toggle */}
-          <button
-            className="min-[986px]:hidden p-2 rounded-md border border-border hover:bg-primary/10 transition-colors duration-300"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="min-[986px]:hidden bg-white border-t border-border px-4 py-4 space-y-4 shadow-md">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`block text-[15px] font-medium transition-all duration-300 hover:translate-x-1 ${
-                active === item.href
-                  ? "text-red-600"
-                  : "text-black hover:text-red-600"
-              }`}
-              style={{ textDecoration: "none" }}
-            >
-              {item.label}
-            </Link>
-          ))}
-
-          {/* Mobile Search */}
-          <Link to="/search" className="w-full">
-            <Input
-              type="text"
-              placeholder="Search courses..."
-              className="w-full focus-visible:ring-primary cursor-pointer"
-              readOnly
-            />
-          </Link>
-
-          <p></p>
-
           {/* Mobile Buttons */}
-          <div className="flex flex-col gap-3">
+          <div className="d-lg-none d-d-flex d-flex-column gap-2">
             <Button
               variant="outline"
-              className="w-full hover:scale-[1.02] transition-transform duration-300"
+              className="w-100"
               onClick={() => {
                 setIsLoginModalOpen(true);
                 setMobileMenuOpen(false);
@@ -158,14 +122,14 @@ export default function Navbar({ active, onLoginClick }) {
               Login
             </Button>
 
-            <Link to="/signup" className="w-full">
-              <Button className="w-full hover:scale-[1.02] bg-accent duration-300">
+            <Link to="/signup" className="w-100">
+              <Button className="w-100" variant="danger">
                 Sign Up
               </Button>
             </Link>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Login Modal */}
       <LoginModal
