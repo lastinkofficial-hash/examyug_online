@@ -25,25 +25,27 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section id="about-us" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Choose ExamYug24?</h2>
-          <p className="text-lg text-muted-foreground">
+    <section id="about-us" className="py-5" style={{ backgroundColor: '#f5f5f5' }}>
+      <div className="container-lg px-3">
+        <div className="text-center mb-5">
+          <h2 className="fs-3 fs-md-1 fw-bold text-dark mb-4">Why Choose ExamYug24?</h2>
+          <p className="fs-6 text-muted">
             We provide everything you need for academic success
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div key={index} className="text-center">
-                <div className="inline-block p-3 bg-accent bg-opacity-10 rounded-lg mb-4">
-                  <Icon className="w-6 h-6 text-yellow-300" />
+              <div key={index} className="col">
+                <div className="text-center">
+                  <div className="d-inline-flex p-3 rounded-2 mb-4" style={{ backgroundColor: '#fbbf24', backgroundColor: 'rgba(251, 191, 36, 0.1)' }}>
+                    <Icon className="w-6 h-6" style={{ color: '#fbbf24' }} />
+                  </div>
+                  <h3 className="fw-bold text-dark mb-2">{feature.title}</h3>
+                  <p className="small text-muted">{feature.description}</p>
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
               </div>
             );
           })}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../ui/Button"; // Adjust path as needed
+import Button from '../ui/button';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -21,21 +21,21 @@ export default function NewsletterSignup() {
   return (
     <section
       id="contact-us"
-      className="py-20 bg-gradient-to-r from-primary to-accent"
+      className="py-5"
+      style={{ backgroundColor: '#dc2626' }}
     >
-      <div className="max-w-3xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <div style={{ maxWidth: '768px', margin: '0 auto' }} className="px-3 text-center">
+        <h2 className="fs-3 fs-md-1 fw-bold text-white mb-4">
           Get the Latest Updates
         </h2>
 
-        <p className="text-lg text-white/90 mb-8">
-          Subscribe to our newsletter for new courses, study tips, and
-          exclusive offers
+        <p className="fs-6 mb-5" style={{ color: 'rgba(255,255,255,0.9)' }}>
+          Subscribe to our newsletter for new courses, study tips, and exclusive offers
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+          className="d-flex flex-column flex-sm-row gap-3 justify-content-center"
         >
           <input
             type="email"
@@ -43,19 +43,20 @@ export default function NewsletterSignup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-white"
+            className="form-control rounded-2"
+            style={{ minWidth: '250px' }}
           />
 
           <Button
             type="submit"
-            className="bg-dark text-primary hover:opacity-90 font-semibold"
+            className="btn btn-dark fw-bold"
           >
             {isSubmitted ? "Subscribed!" : "Subscribe"}
           </Button>
         </form>
 
         {isSubmitted && (
-          <p className="mt-4 text-white text-sm">
+          <p className="mt-4 text-white small">
             Thank you for subscribing! Check your email for confirmation.
           </p>
         )}

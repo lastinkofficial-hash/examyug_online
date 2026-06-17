@@ -1,0 +1,35 @@
+.course-card-container {
+    perspective: 1000px;
+    width: 100%;
+    min-height: 450px;
+  }
+  
+  .course-card-inner {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+  
+  .course-card-container.flipped .course-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .course-card-front,
+  .course-card-back {
+    position: absolute;
+    width: 100%;
+    min-height: 450px;
+    backface-visibility: hidden;
+    border-radius: 0.75rem;
+  }
+  
+  .course-card-back {
+    transform: rotateY(180deg);
+  }
+  
+  .course-card-front .card-body,
+  .course-card-back .card-body {
+    min-height: 250px;
+  }

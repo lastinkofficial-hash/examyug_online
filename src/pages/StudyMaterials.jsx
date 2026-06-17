@@ -22,10 +22,10 @@ export default function StudyMaterials() {
       try {
         const [booksRes, booksetsRes] = await Promise.all([
           fetch(
-            'https://examyug-dashboard-backend.onrender.com/api/v1/book/view-all-books?page=1&limit=5'
+            'https://examyug-dashboard-backend.onrender.com/api/v1/book/view-all-books?page=1&limit=6'
           ),
           fetch(
-            'https://examyug-dashboard-backend.onrender.com/api/v1/bookset/view-all-booksets?page=1&limit=5'
+            'https://examyug-dashboard-backend.onrender.com/api/v1/bookset/view-all-booksets?page=1&limit=6'
           ),
         ]);
 
@@ -58,8 +58,8 @@ export default function StudyMaterials() {
 
   if (loading) {
     return (
-      <main className="min-h-screen flex items-center justify-center">
-        <p className="text-lg">Loading study materials...</p>
+      <main className="min-vh-100 d-flex align-items-center justify-content-center">
+        <p className="fs-6">Loading study materials...</p>
       </main>
     );
   }
@@ -112,15 +112,15 @@ export default function StudyMaterials() {
   return (
     <main className="bg-background">
       <AnnouncementBar />
-      <Navbar />
+      <Navbar active="/study-materials" />
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      <section className="container-lg d-d-flex justify-content-center px-3 py-5">
+        <div className="text-center mb-5">
+          <h1 className="display-5 md:display-4 fw-bold text-foreground mb-5">
             Study Materials
           </h1>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="fs-6 text-muted-foreground max-w-2xl d-d-flex justify-content-center">
             Access comprehensive study materials, books, book sets,
             notes, and resources created by our expert instructors.
           </p>
@@ -128,13 +128,13 @@ export default function StudyMaterials() {
       </section>
 
       {/* BOOKS SECTION */}
-      <section className="max-w-7xl mx-auto px-4 py-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">
+      <section className="container-lg d-d-flex justify-content-center px-3 py-3">
+        <h2 className="fs-3 fw-bold mb-5 text-center">
           Books
         </h2>
 
         {/* Books Categories */}
-        <div className="flex flex-wrap gap-4 justify-center mb-12">
+        <div className="d-flex d-flex-wrap gap-3 justify-content-center mb-5">
           {bookCategories.map((category) => (
             <Button
               key={category.id}
@@ -146,7 +146,7 @@ export default function StudyMaterials() {
               onClick={() =>
                 setSelectedBookCategory(category.id)
               }
-              className="hover:scale-105 transition-transform duration-300"
+              className="-transform"
             >
               {category.label}
             </Button>
@@ -154,41 +154,41 @@ export default function StudyMaterials() {
         </div>
 
         {/* Books Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="row row-cols-1 md:row-cols-2 lg:row-cols-3 gap-4">
           {filteredMaterials.map((material) => (
             <div
               key={material._id}
-              className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+              className="bg-white border border-border rounded-2 overflow-d-none hover:shadow-sm-lg d-flex d-flex-column"
             >
               <div className="h-60 relative">
                 <Image
                   src={material.thumbnail}
                   alt={material.bookTitle}
                   fill
-                  className="object-cover"
+                  className="object-fit-cover"
                 />
               </div>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium w-fit mb-3">
+              <div className="p-6 d-flex d-flex-column d-flex-grow">
+                <span className="bg-primary/20 text-primary px-3 py-1 rounded-circle small fw-bold w-fit mb-3">
                   {material.category?.categoryTitle || 'General'}
                 </span>
 
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="fs-6 fw-bold mb-2">
                   {material.bookTitle}
                 </h3>
 
-                <p className="text-muted-foreground text-sm flex-grow mb-4 line-clamp-3">
+                <p className="text-muted-foreground small d-flex-grow mb-4 line-clamp-3">
                   {material.bookDescription}
                 </p>
 
-                <div className="flex justify-between items-center border-t pt-4">
+                <div className="d-flex justify-content-between align-items-center border-top pt-4">
                   <div>
-                    <span className="line-through text-muted-foreground text-sm">
+                    <span className="line-through text-muted-foreground small">
                       ₹{material.maxPrice}
                     </span>
 
-                    <span className="ml-2 text-primary font-bold text-lg">
+                    <span className="ms-2 text-primary fw-bold fs-6">
                       ₹{material.sellingPrice}
                     </span>
                   </div>
@@ -199,7 +199,7 @@ export default function StudyMaterials() {
                       window.open(material.bookPdf, '_blank')
                     }
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-4 h-4 me-2" />
                     Download
                   </Button>
                 </div>
@@ -208,7 +208,7 @@ export default function StudyMaterials() {
           ))}
 
           {filteredMaterials.length === 0 && (
-            <div className="col-span-full text-center py-8">
+            <div className="col-span-full text-center py-5">
               No books found.
             </div>
           )}
@@ -216,13 +216,13 @@ export default function StudyMaterials() {
       </section>
 
       {/* BOOK SETS SECTION */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">
+      <section className="container-lg d-d-flex justify-content-center px-3 py-5">
+        <h2 className="fs-3 fw-bold mb-5 text-center">
           Book Sets
         </h2>
 
         {/* BookSet Categories */}
-        <div className="flex flex-wrap gap-4 justify-center mb-12">
+        <div className="d-flex d-flex-wrap gap-3 justify-content-center mb-5">
           {booksetCategories.map((category) => (
             <Button
               key={category.id}
@@ -234,7 +234,7 @@ export default function StudyMaterials() {
               onClick={() =>
                 setSelectedBooksetCategory(category.id)
               }
-              className="hover:scale-105 transition-transform duration-300"
+              className="-transform"
             >
               {category.label}
             </Button>
@@ -242,41 +242,41 @@ export default function StudyMaterials() {
         </div>
 
         {/* BookSet Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="row row-cols-1 md:row-cols-2 lg:row-cols-3 gap-4">
           {filteredBooksets.map((bookset) => (
             <div
               key={bookset._id}
-              className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+              className="bg-white border border-border rounded-2 overflow-d-none hover:shadow-sm-lg d-flex d-flex-column"
             >
               <div className="h-60 relative">
                 <Image
                   src={bookset.thumbnail}
                   alt={bookset.booksetTitle}
                   fill
-                  className="object-cover"
+                  className="object-fit-cover"
                 />
               </div>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium w-fit mb-3">
+              <div className="p-6 d-flex d-flex-column d-flex-grow">
+                <span className="bg-primary/20 text-primary px-3 py-1 rounded-circle small fw-bold w-fit mb-3">
                   {bookset.category?.categoryTitle || 'General'}
                 </span>
 
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="fs-6 fw-bold mb-2">
                   {bookset.booksetTitle}
                 </h3>
 
-                <p className="text-muted-foreground text-sm flex-grow mb-4 line-clamp-3">
+                <p className="text-muted-foreground small d-flex-grow mb-4 line-clamp-3">
                   {bookset.booksetDescription}
                 </p>
 
-                <div className="flex justify-between items-center border-t pt-4">
+                <div className="d-flex justify-content-between align-items-center border-top pt-4">
                   <div>
-                    <span className="line-through text-muted-foreground text-sm">
+                    <span className="line-through text-muted-foreground small">
                       ₹{bookset.maxPrice}
                     </span>
 
-                    <span className="ml-2 text-primary font-bold text-lg">
+                    <span className="ms-2 text-primary fw-bold fs-6">
                       ₹{bookset.sellingPrice}
                     </span>
                   </div>
@@ -292,7 +292,7 @@ export default function StudyMaterials() {
                       )
                     }
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-4 h-4 me-2" />
                     Download
                   </Button>
                 </div>
@@ -301,7 +301,7 @@ export default function StudyMaterials() {
           ))}
 
           {filteredBooksets.length === 0 && (
-            <div className="col-span-full text-center py-8">
+            <div className="col-span-full text-center py-5">
               No book sets found.
             </div>
           )}

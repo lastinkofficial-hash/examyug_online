@@ -54,36 +54,36 @@ export default function Contact() {
       <AnnouncementBar />
       <Navbar active="/contact-us" />
 
-      <section className="max-w-7xl mx-auto px-4 py-20">
+      <section className="container-lg d-d-flex justify-content-center px-3 py-5">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h1 className="display-5 md:display-4 fw-bold text-foreground mb-5">
             Get in Touch
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="fs-6 text-muted-foreground max-w-3xl d-d-flex justify-content-center">
             Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="row row-cols-1 lg:row-cols-3 gap-4 mb-16">
           {contactInfo.map((info, index) => {
             const IconComponent = info.icon
             return (
-              <div key={index} className="p-6 border border-border rounded-lg text-center">
-                <IconComponent className="w-8 h-8 text-primary mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-foreground mb-2">{info.title}</h3>
-                <p className="text-foreground font-semibold mb-1">{info.content}</p>
-                <p className="text-muted-foreground text-sm">{info.description}</p>
+              <div key={index} className="p-6 border border-border rounded-2 text-center">
+                <IconComponent className="w-8 h-8 text-primary d-d-flex justify-content-center mb-4" />
+                <h3 className="fs-6 fw-bold text-foreground mb-2">{info.title}</h3>
+                <p className="text-foreground fw-bold mb-1">{info.content}</p>
+                <p className="text-muted-foreground small">{info.description}</p>
               </div>
             )
           })}
         </div>
 
-        <div className="max-w-2xl mx-auto bg-white border border-border rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
+        <div className="max-w-2xl d-d-flex justify-content-center bg-white border border-border rounded-2 p-8">
+          <h2 className="fs-4 fw-bold text-foreground mb-5">Send us a Message</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="row row-cols-1 md:row-cols-2 gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="name" className="d-block small fw-bold text-foreground mb-2">
                   Name
                 </label>
                 <Input
@@ -96,7 +96,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="email" className="d-block small fw-bold text-foreground mb-2">
                   Email
                 </label>
                 <Input
@@ -112,7 +112,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="subject" className="d-block small fw-bold text-foreground mb-2">
                 Subject
               </label>
               <Input
@@ -126,7 +126,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="message" className="d-block small fw-bold text-foreground mb-2">
                 Message
               </label>
               <textarea
@@ -136,12 +136,12 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Your message..."
                 rows="6"
-                className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-100 px-3 py-2 border border-border rounded-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               ></textarea>
             </div>
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-100" variant="danger">
               Send Message
             </Button>
           </form>

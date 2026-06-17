@@ -1,6 +1,9 @@
-import PropTypes from 'prop-types';
-import { Star, Users } from 'lucide-react';
-import Button  from '../ui/button';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Card, Button } from "react-bootstrap";
+import { Star, Users } from "lucide-react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./CourseCard.css";
 
 export function CourseCard({
   title,
@@ -8,30 +11,88 @@ export function CourseCard({
   students,
   rating,
   price,
-  image
+  image,
+  description,
 }) {
-  return (
-    <div className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
-      <div className="p-5">
-        <h3 className="font-semibold text-foreground mb-2 line-clamp-2">{title}</h3>
-        <p className="text-sm text-muted-foreground mb-4">{instructor}</p>
-        
-        <div className="flex items-center justify-between mb-4 text-sm">
-          <div className="flex items-center gap-1">
-            <Users className="w-4 h-4 text-muted-foreground" />
-            <span className="text-muted-foreground">{students.toLocaleString()}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="text-foreground font-medium">{rating}</span>
-          </div>
-        </div>
+  const [flipped, setFlipped] = useState(false);
 
-        <div className="flex items-center justify-between">
-          <span className="text-xl font-bold text-accent">${price}</span>
-          <Button size="sm" variant="outline">Learn More</Button>
-        </div>
+  return (
+    <div className={`course-card-container ${flipped ? "flipped" : ""}`}>
+      <div className="course-card-inner">
+
+        {/* Front Side */}
+        <Card className="course-card-front shadow-sm-sm border-0">
+          <Card.Img
+            variant="top"
+            src={image}
+            alt={title}
+            style={{ height: "200px", objectFit: "cover" }}
+          />
+
+          <Card.Body>
+            <Card.Title>{title}</Card.Title>
+
+            <Card.Text className="text-muted">
+              {instructor}
+            </Card.Text>
+
+            <div className="d-d-flex justify-content-between mb-3">
+              <div className="d-d-flex align-align-items-center gap-1">
+                <Users size={16} />
+                <span>{students.toLocaleString()}</span>
+              </div>
+
+              <div className="d-d-flex align-align-items-center gap-1">
+                <Star
+                  size={16}
+                  fill="#facc15"
+                  color="#facc15"
+                />
+                <span>{rating}</span>
+              </div>
+            </div>
+
+            <div className="d-d-flex justify-content-between align-align-items-center">
+              <span className="fs-4 fw-bold text-success">
+                ${price}
+              </span>
+
+              <Button
+                variant="outline-primary"
+                size="sm"
+                onClick={() => setFlipped(true)}
+              >
+                View Description
+              </Button>
+            </div>
+          </Card.Body>
+        </Card>
+
+        {/* Back Side */}
+        <Card className="course-card-back shadow-sm-sm border-0">
+          <Card.Body className="d-d-flex d-flex-column justify-content-between h-100">
+            <div>
+              <Card.Title>{title}</Card.Title>
+
+              <Card.Text
+                style={{
+                  maxHeight: "220px",
+                  overflowY: "auto",
+                }}
+              >
+                {description}
+              </Card.Text>
+            </div>
+
+            <Button
+              variant="secondary"
+              onClick={() => setFlipped(false)}
+            >
+              Back
+            </Button>
+          </Card.Body>
+        </Card>
+
       </div>
     </div>
   );
@@ -44,4 +105,5 @@ CourseCard.propTypes = {
   rating: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };

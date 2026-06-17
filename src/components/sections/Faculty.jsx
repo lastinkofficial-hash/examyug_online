@@ -40,26 +40,31 @@ export default function Faculty() {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Faculty</h2>
-          <p className="text-lg text-muted-foreground">
+    <section className="py-5" style={{ backgroundColor: '#ffffff' }}>
+      <div className="container-lg px-3">
+        <div className="text-center mb-5">
+          <h2 className="fs-3 fs-md-1 fw-bold text-dark mb-4">Our Faculty</h2>
+          <p className="fs-6 text-muted">
             Learn from the best minds in education
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
           {facultyMembers.map((member, index) => (
-            <div key={index} className="text-center">
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="font-semibold text-foreground mb-1">{member.name}</h3>
-              <p className="text-sm text-primary font-medium mb-2">{member.subject}</p>
-              <p className="text-sm text-muted-foreground">{member.bio}</p>
+            <div key={index} className="col">
+              <div className="text-center">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="rounded-circle mb-4"
+                  width="96"
+                  height="96"
+                  style={{ objectFit: 'cover' }}
+                />
+                <h3 className="fw-bold text-dark mb-1">{member.name}</h3>
+                <p className="small fw-bold mb-2" style={{ color: '#dc2626' }}>{member.subject}</p>
+                <p className="small text-muted">{member.bio}</p>
+              </div>
             </div>
           ))}
         </div>

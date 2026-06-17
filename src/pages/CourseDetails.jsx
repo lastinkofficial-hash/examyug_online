@@ -32,47 +32,47 @@ export default function CourseDetails() {
       <AnnouncementBar />
       <Navbar />
 
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="container-lg d-d-flex justify-content-center px-3 py-5">
+        <div className="row row-cols-1 lg:row-cols-2 gap-12">
           <div>
             <img
               src={course.image}
               alt={course.title}
-              className="w-full rounded-lg mb-6"
+              className="w-100 rounded-2 mb-5"
             />
           </div>
 
           <div>
-            <h1 className="text-4xl font-bold text-foreground mb-4">{course.title}</h1>
-            <p className="text-lg text-muted-foreground mb-6">{course.description}</p>
+            <h1 className="display-5 fw-bold text-foreground mb-4">{course.title}</h1>
+            <p className="fs-6 text-muted-foreground mb-5">{course.description}</p>
 
-            <div className="flex items-center gap-6 mb-8 pb-8 border-b border-border">
-              <div className="flex items-center gap-2">
+            <div className="d-flex align-items-center gap-4 mb-5 pb-8 border-bottom border-border">
+              <div className="d-flex align-items-center gap-2">
                 <Star className="w-5 h-5 fill-yellow-400" />
-                <span className="font-semibold">{course.rating}</span>
+                <span className="fw-bold">{course.rating}</span>
                 <span className="text-muted-foreground">({course.students} students)</span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="d-flex align-items-center gap-2 text-muted-foreground">
                 <Clock className="w-5 h-5" />
                 {course.duration}
               </div>
             </div>
 
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-foreground mb-4">What you&apos;ll learn</h3>
+            <div className="mb-5">
+              <h3 className="fs-5 fw-bold text-foreground mb-4">What you&apos;ll learn</h3>
               <ul className="space-y-3">
                 {course.modules.map((module, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                  <li key={index} className="d-flex align-items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary d-flex-shrink-0" />
                     <span className="text-foreground">{module}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="flex items-center gap-4">
-              <span className="text-3xl font-bold text-primary">₹{course.price}</span>
-              <Button className="flex-1" size="lg">
+            <div className="d-flex align-items-center gap-3">
+              <span className="fs-3 fw-bold text-primary">₹{course.price}</span>
+              <Button className="d-flex-1" size="lg">
                 Enroll Now
               </Button>
             </div>

@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <main className="bg-background">
       <AnnouncementBar />
-      <Navbar onLoginClick={() => setIsLoginModalOpen(true)} />
+      <Navbar active="/" onLoginClick={() => setIsLoginModalOpen(true)} />
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
       <HeroCrousel />
       <TrustStatistics />

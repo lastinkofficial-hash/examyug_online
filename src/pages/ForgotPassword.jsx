@@ -28,23 +28,23 @@ export default function ForgotPassword() {
       <AnnouncementBar />
       <Navbar active="/forgot-password" />
 
-      <section className="min-h-[calc(100vh-300px)] flex items-center justify-center px-4 py-16">
-        <div className="w-full max-w-md">
-          <div className="bg-white border border-border rounded-lg p-8 md:p-10 shadow-sm">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-foreground mb-2">Reset Password</h1>
+      <section className="min-h-[calc(100vh-300px)] d-flex align-items-center justify-content-center px-3 py-5">
+        <div className="w-100 max-w-md">
+          <div className="bg-white border border-border rounded-2 p-8 md:p-10 shadow-sm-sm">
+            <div className="text-center mb-5">
+              <h1 className="fs-3 fw-bold text-foreground mb-2">Reset Password</h1>
               <p className="text-muted-foreground">Enter your email address to reset your password</p>
             </div>
 
             {submitted ? (
               <div className="text-center space-y-4">
-                <div className="text-green-600 text-sm bg-green-50 p-4 rounded-lg">
-                  <p className="font-semibold">Check your email</p>
+                <div className="text-success small bg-green-50 p-4 rounded-2">
+                  <p className="fw-bold">Check your email</p>
                   <p>We&apos;ve sent password reset instructions to {email}</p>
                 </div>
                 <Link
                   to="/login"
-                  className="text-primary hover:text-primary/80 font-medium transition-colors duration-300"
+                  className="text-primary hover:text-primary/80 fw-bold-colors"
                 >
                   Back to Login
                 </Link>
@@ -52,7 +52,7 @@ export default function ForgotPassword() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="email" className="d-block small fw-bold text-foreground mb-2">
                     Email Address
                   </label>
                   <div className="relative">
@@ -72,7 +72,7 @@ export default function ForgotPassword() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-6 hover:scale-105 transition-transform duration-300 disabled:opacity-50"
+                  className="w-100 py-4-transform disabled:opacity-50"
                 >
                   {isLoading ? 'Sending...' : 'Send Reset Link'}
                 </Button>
@@ -80,7 +80,7 @@ export default function ForgotPassword() {
                 <div className="text-center">
                   <Link
                     to="/login"
-                    className="text-primary hover:text-primary/80 font-medium transition-colors duration-300"
+                    className="text-primary hover:text-primary/80 fw-bold-colors"
                   >
                     Back to Login
                   </Link>

@@ -35,35 +35,38 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-background">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-muted-foreground">
+    <section id="faq" className="py-5" style={{ backgroundColor: '#dc2626' }}>
+      <div style={{ maxWidth: '768px', margin: '0 auto' }} className="px-3">
+        <div className="text-center mb-5">
+          <h2 className="fs-3 fs-md-1 fw-bold text-white mb-4">Frequently Asked Questions</h2>
+          <p className="fs-6 text-white-50">
             Find answers to common questions about our platform
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="d-flex flex-column gap-3">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white border border-border rounded-lg overflow-hidden"
+              className="bg-white border border-light rounded-2 overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
+                className="w-100 px-4 py-3 d-flex align-items-center justify-content-between text-start"
+                style={{ backgroundColor: '#ffffff', border: 'none', cursor: 'pointer' }}
               >
-                <span className="font-semibold text-foreground text-left">{faq.question}</span>
+                <span className="fw-bold text-dark">{faq.question}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-muted-foreground transition-transform ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
+                  className="w-5 h-5 text-muted"
+                  style={{
+                    transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease'
+                  }}
                 />
               </button>
               {openIndex === index && (
-                <div className="px-6 py-4 border-t border-border bg-muted/30">
-                  <p className="text-muted-foreground">{faq.answer}</p>
+                <div className="px-4 py-3 border-top text-dark" style={{ backgroundColor: '#f5f5f5' }}>
+                  <p className="mb-0">{faq.answer}</p>
                 </div>
               )}
             </div>

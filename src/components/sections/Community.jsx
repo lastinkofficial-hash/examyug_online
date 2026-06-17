@@ -4,47 +4,53 @@ import Button  from '@/components/ui/button';
 
 export default function Community() {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Join Our Community</h2>
-          <p className="text-lg text-muted-foreground">
+    <section className="py-5" style={{ backgroundColor: '#f9f9f9' }}>
+      <div className="container-lg px-3">
+        <div className="text-center mb-5">
+          <h2 className="fs-3 fs-md-1 fw-bold text-dark mb-4">Join Our Community</h2>
+          <p className="fs-6 text-muted">
             Connect with thousands of learners worldwide
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-background rounded-lg p-8 text-center">
-            <div className="inline-block p-3 bg-primary bg-opacity-10 rounded-lg mb-4">
-              <MessageSquare className="w-6 h-6 text-primary" />
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          <div className="col">
+            <div className="bg-white rounded-2 p-4 text-center h-100" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+              <div className="d-inline-flex p-3 rounded-2 mb-4" style={{ backgroundColor: 'rgba(220, 38, 38, 0.1)' }}>
+                <MessageSquare className="w-6 h-6" style={{ color: '#dc2626' }} />
+              </div>
+              <h3 className="fw-bold text-dark mb-2 fs-6">Discussion Forums</h3>
+              <p className="text-muted mb-4 small">
+                Ask questions, share insights, and learn from peer discussions on any topic.
+              </p>
+              <Button variant="outline">Join Forums</Button>
             </div>
-            <h3 className="font-semibold text-foreground mb-2 text-lg">Discussion Forums</h3>
-            <p className="text-muted-foreground mb-4">
-              Ask questions, share insights, and learn from peer discussions on any topic.
-            </p>
-            <Button variant="outline">Join Forums</Button>
           </div>
 
-          <div className="bg-background rounded-lg p-8 text-center">
-            <div className="inline-block p-3 bg-accent bg-opacity-10 rounded-lg mb-4">
-              <Users className="w-6 h-6 text-yellow-300" />
+          <div className="col">
+            <div className="bg-white rounded-2 p-4 text-center h-100" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+              <div className="d-inline-flex p-3 rounded-2 mb-4" style={{ backgroundColor: 'rgba(251, 191, 36, 0.1)' }}>
+                <Users className="w-6 h-6" style={{ color: '#fbbf24' }} />
+              </div>
+              <h3 className="fw-bold text-dark mb-2 fs-6">Study Groups</h3>
+              <p className="text-muted mb-4 small">
+                Form or join study groups to collaborate and prepare together with peers.
+              </p>
+              <Button variant="outline">Find Groups</Button>
             </div>
-            <h3 className="font-semibold text-foreground mb-2 text-lg">Study Groups</h3>
-            <p className="text-muted-foreground mb-4">
-              Form or join study groups to collaborate and prepare together with peers.
-            </p>
-            <Button variant="outline">Find Groups</Button>
           </div>
 
-          <div className="bg-background rounded-lg p-8 text-center">
-            <div className="inline-block p-3 bg-primary bg-opacity-10 rounded-lg mb-4">
-              <Globe className="w-6 h-6 text-primary" />
+          <div className="col">
+            <div className="bg-white rounded-2 p-4 text-center h-100" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+              <div className="d-inline-flex p-3 rounded-2 mb-4" style={{ backgroundColor: 'rgba(220, 38, 38, 0.1)' }}>
+                <Globe className="w-6 h-6" style={{ color: '#dc2626' }} />
+              </div>
+              <h3 className="fw-bold text-dark mb-2 fs-6">Global Network</h3>
+              <p className="text-muted mb-4 small">
+                Connect with students from around the world and expand your learning horizons.
+              </p>
+              <Button variant="outline">Explore Network</Button>
             </div>
-            <h3 className="font-semibold text-foreground mb-2 text-lg">Global Network</h3>
-            <p className="text-muted-foreground mb-4">
-              Connect with students from around the world and expand your learning horizons.
-            </p>
-            <Button variant="outline">Explore Network</Button>
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { CourseCard } from '../components/CourseCard';
 import Button from '../ui/button';
 
@@ -56,9 +55,9 @@ export default function FeaturedCourses() {
 
   if (loading) {
     return (
-      <section id="courses" className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-lg text-muted-foreground">
+      <section id="courses" className="py-5" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container-lg px-3 text-center">
+          <p className="fs-6 text-muted">
             Loading featured courses...
           </p>
         </div>
@@ -67,26 +66,25 @@ export default function FeaturedCourses() {
   }
 
   return (
-    <section id="courses" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="courses" className="py-5" style={{ backgroundColor: '#ffffff' }}>
+      <div className="container-lg px-3">
         {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-5">
+          <h2 className="fs-3 fs-md-1 fw-bold text-dark mb-4">
             Featured Courses
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="fs-6 text-muted">
             Choose from our wide range of expertly curated courses
           </p>
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-3 justify-center mb-12">
+        <div className="d-flex flex-wrap gap-3 justify-content-center mb-5">
           {categories.map((category) => (
             <Button
               key={String(category)}
               onClick={() => setSelectedCategory(String(category))}
-              variant={selectedCategory === category ? 'destructive' : 'outline'}
-              className={selectedCategory === category ? 'hover:bg-primary/90' : ''}
+              variant={selectedCategory === category ? 'danger' : 'outline'}
             >
               {category}
             </Button>
@@ -95,22 +93,23 @@ export default function FeaturedCourses() {
 
         {/* Courses Grid */}
         {displayedCourses.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mb-5">
             {displayedCourses.slice(0, 6).map((course) => (
-              <CourseCard
-                key={course._id}
-                title={course.courseTitle}
-                instructor={course.category?.categoryTitle || 'Examyug'}
-                students={0}
-                rating={5}
-                price={`₹${course.sellingPrice}`}
-                image={course.thumbnail}
-              />
+              <div key={course._id} className="col">
+                <CourseCard
+                  title={course.courseTitle}
+                  instructor={course.category?.categoryTitle || 'Examyug'}
+                  students={0}
+                  rating={5}
+                  price={`₹${course.sellingPrice}`}
+                  image={course.thumbnail}
+                />
+              </div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-10">
-            <p className="text-muted-foreground">No featured courses found.</p>
+          <div className="text-center py-5">
+            <p className="text-muted">No featured courses found.</p>
           </div>
         )}
 
@@ -119,7 +118,6 @@ export default function FeaturedCourses() {
           <Button
             variant="outline"
             size="lg"
-            className="gap-2"
             onClick={() => {
               window.location.href = '/courses';
             }}
@@ -131,18 +129,3 @@ export default function FeaturedCourses() {
     </section>
   );
 }
-
-FeaturedCourses.propTypes = {
-  _id: PropTypes.string.isRequired,
-  courseTitle: PropTypes.string.isRequired,
-  courseDescription: PropTypes.string.isRequired,
-  sellingPrice: PropTypes.number.isRequired,
-  maxPrice: PropTypes.number,
-  thumbnail: PropTypes.string.isRequired,
-  featured: PropTypes.string,
-  courseDisplay: PropTypes.string,
-  category: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    categoryTitle: PropTypes.string.isRequired,
-  }),
-};

@@ -14,7 +14,7 @@ function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
       role="navigation"
       aria-label="pagination"
       data-slot="pagination"
-      className={cn('mx-auto flex w-full justify-center', className)}
+      className={cn('d-d-flex justify-content-center d-flex w-100 justify-content-center', className)}
       {...props}
     />
   )
@@ -27,7 +27,7 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn('flex flex-row items-center gap-1', className)}
+      className={cn('d-flex d-flex-row align-items-center gap-1', className)}
       {...props}
     />
   )
@@ -77,7 +77,7 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
+      <span className="d-none sm:d-block">Previous</span>
     </PaginationLink>
   )
 }
@@ -93,7 +93,7 @@ function PaginationNext({
       className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
+      <span className="d-none sm:d-block">Next</span>
       <ChevronRightIcon />
     </PaginationLink>
   )
@@ -105,9 +105,9 @@ function PaginationEllipsis({
 }: React.ComponentProps<'span'>) {
   return (
     <span
-      aria-hidden
+      aria-d-none
       data-slot="pagination-ellipsis"
-      className={cn('flex size-9 items-center justify-center', className)}
+      className={cn('d-flex size-9 align-items-center justify-content-center', className)}
       {...props}
     >
       <MoreHorizontalIcon className="size-4" />

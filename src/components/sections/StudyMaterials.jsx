@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
-import Button  from "../ui/Button"; // Adjust path as needed
+import Button from "../ui/button";
+import MaterialCard from "../components/MaterialCard";
 
 export default function StudyMaterials() {
-  const [selectedBookCategory, setSelectedBookCategory] =
-    useState("all");
-  const [selectedBooksetCategory, setSelectedBooksetCategory] =
-    useState("all");
-
+  const [selectedBookCategory, setSelectedBookCategory] = useState("all");
+  const [selectedBooksetCategory, setSelectedBooksetCategory] = useState("all");
+  const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [materials, setMaterials] = useState([]);
   const [booksets, setBooksets] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,12 +15,8 @@ export default function StudyMaterials() {
     async function fetchData() {
       try {
         const [booksRes, booksetsRes] = await Promise.all([
-          fetch(
-            "https://examyug-dashboard-backend.onrender.com/api/v1/book/view-all-books?page=1&limit=5"
-          ),
-          fetch(
-            "https://examyug-dashboard-backend.onrender.com/api/v1/bookset/view-all-booksets?page=1&limit=5"
-          ),
+          fetch("https://examyug-dashboard-backend.onrender.com/api/v1/book/view-all-books?page=1&limit=5"),
+          fetch("https://examyug-dashboard-backend.onrender.com/api/v1/bookset/view-all-booksets?page=1&limit=5"),
         ]);
 
         const booksData = await booksRes.json();
@@ -30,33 +25,22 @@ export default function StudyMaterials() {
         if (booksData?.success) {
           setMaterials(booksData.allBooks || []);
         }
-
         if (booksetsData?.success) {
-          setBooksets(
-            booksetsData.allBookSets ||
-              booksetsData.allBooksets ||
-              []
-          );
+          setBooksets(booksetsData.allBookSets || booksetsData.allBooksets || []);
         }
       } catch (error) {
-        console.error(
-          "Error fetching study materials:",
-          error
-        );
+        console.error("Error fetching study materials:", error);
       } finally {
         setLoading(false);
       }
     }
-
     fetchData();
   }, []);
 
   if (loading) {
     return (
-      <main className="min-h-screen flex items-center justify-center">
-        <p className="text-lg">
-          Loading study materials...
-        </p>
+      <main className="min-vh-100 d-flex align-items-center justify-content-center">
+        <p className="fs-6">Loading study materials...</p>
       </main>
     );
   }
@@ -64,264 +48,204 @@ export default function StudyMaterials() {
   const bookCategories = [
     { id: "all", label: "All Books" },
     ...Array.from(
-      new Set(
-        materials
-          .map((book) => book.category?.categoryTitle)
-          .filter(Boolean)
-      )
-    ).map((category) => ({
-      id: category,
-      label: category,
-    })),
+      new Set(materials.map((book) => book.category?.categoryTitle).filter(Boolean))
+    ).map((category) => ({ id: category, label: category })),
   ];
 
   const booksetCategories = [
     { id: "all", label: "All Book Sets" },
     ...Array.from(
-      new Set(
-        booksets
-          .map((bookset) => bookset.category?.categoryTitle)
-          .filter(Boolean)
-      )
-    ).map((category) => ({
-      id: category,
-      label: category,
-    })),
+      new Set(booksets.map((bookset) => bookset.category?.categoryTitle).filter(Boolean))
+    ).map((category) => ({ id: category, label: category })),
   ];
 
   const filteredMaterials =
     selectedBookCategory === "all"
       ? materials
-      : materials.filter(
-          (book) =>
-            book.category?.categoryTitle ===
-            selectedBookCategory
-        );
+      : materials.filter((book) => book.category?.categoryTitle === selectedBookCategory);
 
   const filteredBooksets =
     selectedBooksetCategory === "all"
       ? booksets
-      : booksets.filter(
-          (bookset) =>
-            bookset.category?.categoryTitle ===
-            selectedBooksetCategory
-        );
+      : booksets.filter((bookset) => bookset.category?.categoryTitle === selectedBooksetCategory);
 
   return (
-    <main className="bg-background">
+    <main style={{ backgroundColor: "#ffffff" }}>
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Study Materials
-          </h1>
-
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Access comprehensive study materials,
-            books, book sets, notes, and resources
-            created by our expert instructors.
+      <section className="container-lg px-3 py-5">
+        <div className="text-center mb-5">
+          <h1 className="fs-2 fs-md-1 fw-bold text-dark mb-4">Study Materials</h1>
+          <p className="fs-6 text-muted" style={{ maxWidth: "600px", margin: "0 auto" }}>
+            Access comprehensive study materials, books, book sets, notes, and resources created by our expert instructors.
           </p>
         </div>
       </section>
 
       {/* Books Section */}
-      <section className="max-w-7xl mx-auto px-4 py-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          Books
-        </h2>
+      <section className="container-lg px-3 py-5" style={{ backgroundColor: "#f5f5f5" }}>
+        <h2 className="fs-3 fw-bold mb-5 text-center text-dark">Books</h2>
 
-        <div className="flex flex-wrap gap-4 justify-center mb-12">
+        <div className="d-flex flex-wrap gap-3 justify-content-center mb-5">
           {bookCategories.map((category) => (
             <Button
               key={category.id}
-              onClick={() =>
-                setSelectedBookCategory(category.id)
-              }
-              className={`hover:scale-105 transition-transform duration-300 ${
-                selectedBookCategory === category.id
-                  ? "bg-red-600 text-white"
-                  : ""
-              }`}
+              onClick={() => setSelectedBookCategory(category.id)}
+              variant={selectedBookCategory === category.id ? "danger" : "outline"}
             >
               {category.label}
             </Button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {filteredMaterials.map((material) => (
-            <div
-              key={material._id}
-              className="bg-white border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
-            >
-              <div className="h-60 overflow-hidden">
+            <div key={material._id} className="col">
+              <div className="card h-100 border" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
                 <img
                   src={material.thumbnail}
                   alt={material.bookTitle}
-                  className="w-full h-full object-cover"
+                  className="card-img-top"
+                  style={{ height: "200px", objectFit: "cover" }}
                 />
-              </div>
-
-              <div className="p-6 flex flex-col flex-grow">
-                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium w-fit mb-3">
-                  {material.category?.categoryTitle ||
-                    "General"}
-                </span>
-
-                <h3 className="text-lg font-bold mb-2">
-                  {material.bookTitle}
-                </h3>
-
-                <p className="text-gray-500 text-sm flex-grow mb-4">
-                  {material.bookDescription}
-                </p>
-
-                <div className="flex justify-between items-center border-t pt-4">
-                  <div>
-                    <span className="line-through text-gray-400 text-sm">
-                      ₹{material.maxPrice}
-                    </span>
-
-                    <span className="ml-2 text-blue-600 font-bold text-lg">
-                      ₹{material.sellingPrice}
-                    </span>
+                <div className="card-body d-flex flex-column">
+                  <span className="badge" style={{ backgroundColor: "rgba(220, 38, 38, 0.1)", color: "#dc2626", width: "fit-content", marginBottom: "10px" }}>
+                    {material.category?.categoryTitle || "General"}
+                  </span>
+                  <h5 className="card-title fw-bold text-dark">{material.bookTitle}</h5>
+                  <p className="card-text text-muted small flex-grow-1">
+                    {material.bookDescription?.length > 100
+                      ? `${material.bookDescription.substring(0, 100)}...`
+                      : material.bookDescription}
+                  </p>
+                  <div className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
+                    <div>
+                      <span className="text-muted small" style={{ textDecoration: "line-through" }}>₹{material.maxPrice}</span>
+                      <span className="ms-2 fw-bold text-danger">₹{material.sellingPrice}</span>
+                    </div>
+                    <Button onClick={() => setSelectedMaterial(material)} variant="outline" size="sm">
+                      View
+                    </Button>
                   </div>
-
-                  <Button
-                    onClick={() => {
-                      if (material.bookPdf) {
-                        window.open(
-                          material.bookPdf,
-                          "_blank",
-                          "noopener,noreferrer"
-                        );
-                      }
-                    }}
-                  >
-                    <Download className="w-4 h-4 mr-2 inline" />
-                    Download
-                  </Button>
                 </div>
               </div>
             </div>
           ))}
-
-          {filteredMaterials.length === 0 && (
-            <div className="col-span-full text-center py-8">
-              No books found.
-            </div>
-          )}
         </div>
+
+        {filteredMaterials.length === 0 && (
+          <div className="text-center py-5">
+            <p className="text-muted">No books found.</p>
+          </div>
+        )}
       </section>
 
       {/* Book Sets Section */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          Book Sets
-        </h2>
+      <section className="container-lg px-3 py-5">
+        <h2 className="fs-3 fw-bold mb-5 text-center text-dark">Book Sets</h2>
 
-        <div className="flex flex-wrap gap-4 justify-center mb-12">
+        <div className="d-flex flex-wrap gap-3 justify-content-center mb-5">
           {booksetCategories.map((category) => (
             <Button
               key={category.id}
-              onClick={() =>
-                setSelectedBooksetCategory(
-                  category.id
-                )
-              }
-              className={`hover:scale-105 transition-transform duration-300 ${
-                selectedBooksetCategory === category.id
-                  ? "bg-blue-600 text-white"
-                  : ""
-              }`}
+              onClick={() => setSelectedBooksetCategory(category.id)}
+              variant={selectedBooksetCategory === category.id ? "danger" : "outline"}
             >
               {category.label}
             </Button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {filteredBooksets.map((bookset) => (
-            <div
-              key={bookset._id}
-              className="bg-white border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
-            >
-              <div className="h-60 overflow-hidden">
-                <img
-                  src={bookset.thumbnail}
-                  alt={bookset.booksetTitle}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="p-6 flex flex-col flex-grow">
-                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium w-fit mb-3">
-                  {bookset.category?.categoryTitle ||
-                    "General"}
-                </span>
-
-                <h3 className="text-lg font-bold mb-2">
-                  {bookset.booksetTitle}
-                </h3>
-
-                <p className="text-gray-500 text-sm flex-grow mb-4">
-                  {bookset.booksetDescription}
-                </p>
-
-                <div className="flex justify-between items-center border-t pt-4">
-                  <div>
-                    <span className="line-through text-gray-400 text-sm">
-                      ₹{bookset.maxPrice}
-                    </span>
-
-                    <span className="ml-2 text-blue-600 font-bold text-lg">
-                      ₹{bookset.sellingPrice}
-                    </span>
-                  </div>
-
-                  <Button
-                    onClick={() => {
-                      const pdf =
-                        bookset.booksetPdf ||
-                        bookset.bookPdf;
-
-                      if (pdf) {
-                        window.open(
-                          pdf,
-                          "_blank",
-                          "noopener,noreferrer"
-                        );
-                      }
-                    }}
-                  >
-                    <Download className="w-4 h-4 mr-2 inline" />
-                    Download
-                  </Button>
-                </div>
-              </div>
+            <div key={bookset._id} className="col">
+              <MaterialCard
+                title={bookset.booksetTitle}
+                description={bookset.booksetDescription}
+                image={bookset.thumbnail}
+                category={bookset.category?.categoryTitle}
+                maxPrice={bookset.maxPrice}
+                sellingPrice={bookset.sellingPrice}
+                pdfUrl={bookset.booksetPdf || bookset.bookPdf}
+              />
             </div>
           ))}
-
-          {filteredBooksets.length === 0 && (
-            <div className="col-span-full text-center py-8">
-              No book sets found.
-            </div>
-          )}
         </div>
+
+        {filteredBooksets.length === 0 && (
+          <div className="text-center py-5">
+            <p className="text-muted">No book sets found.</p>
+          </div>
+        )}
       </section>
 
-      {/* View More */}
-      <div className="text-center pb-16">
+      {/* View More Button */}
+      <div className="text-center py-5" style={{ backgroundColor: "#f9f9f9" }}>
         <Button
           variant="danger"
           onClick={() => {
-            window.location.href =
-              "/study-materials";
+            window.location.href = "/study-materials";
           }}
         >
           View More Materials
         </Button>
       </div>
+
+      {/* Detail Modal */}
+      {selectedMaterial && (
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-3"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)", zIndex: 1050 }}
+          onClick={() => setSelectedMaterial(null)}
+        >
+          <div
+            className="bg-white rounded-3 w-100 mx-auto"
+            style={{ maxWidth: "900px", maxHeight: "90vh", overflow: "auto" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="row g-0">
+              <div className="col-12 col-md-6">
+                <img
+                  src={selectedMaterial.thumbnail}
+                  alt={selectedMaterial.bookTitle}
+                  className="w-100"
+                  style={{ minHeight: "300px", objectFit: "cover" }}
+                />
+              </div>
+              <div className="col-12 col-md-6 p-4">
+                <span className="badge" style={{ backgroundColor: "rgba(220, 38, 38, 0.1)", color: "#dc2626" }}>
+                  {selectedMaterial.category?.categoryTitle || "General"}
+                </span>
+                <h2 className="fs-4 fw-bold text-dark my-3">{selectedMaterial.bookTitle}</h2>
+                <p className="text-muted" style={{ maxHeight: "200px", overflow: "auto" }}>
+                  {selectedMaterial.bookDescription}
+                </p>
+                <div className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
+                  <div>
+                    <span className="text-muted" style={{ textDecoration: "line-through" }}>₹{selectedMaterial.maxPrice}</span>
+                    <span className="ms-2 fw-bold text-danger fs-5">₹{selectedMaterial.sellingPrice}</span>
+                  </div>
+                </div>
+                <div className="d-flex gap-3 mt-4">
+                  <Button variant="outline" onClick={() => setSelectedMaterial(null)}>
+                    Close
+                  </Button>
+                  <Button
+                    variant="danger"
+                    onClick={() => {
+                      if (selectedMaterial.bookPdf) {
+                        window.open(selectedMaterial.bookPdf, "_blank", "noopener,noreferrer");
+                      }
+                    }}
+                  >
+                    <Download className="w-4 h-4 me-2" style={{ display: "inline-block" }} />
+                    Download
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

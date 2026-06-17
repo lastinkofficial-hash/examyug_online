@@ -32,26 +32,26 @@ export default function About() {
       <AnnouncementBar />
       <Navbar active="/about-us" />
 
-      <section className="max-w-7xl mx-auto px-4 py-20">
+      <section className="container-lg d-d-flex justify-content-center px-3 py-5">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h1 className="display-5 md:display-4 fw-bold text-foreground mb-5">
             About ExamYug
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="fs-6 text-muted-foreground max-w-3xl d-d-flex justify-content-center">
             We&apos;re on a mission to democratize quality education and help students achieve their academic and career goals through expert-led courses and comprehensive learning resources.
           </p>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="container-lg d-d-flex justify-content-center px-3 py-5">
+        <div className="row row-cols-1 md:row-cols-2 lg:row-cols-4 gap-4">
           {values.map((value, index) => {
             const IconComponent = value.icon
             return (
-              <div key={index} className="p-6 border border-border rounded-lg hover:shadow-lg transition-shadow">
+              <div key={index} className="p-6 border border-border rounded-2 hover:shadow-sm-lg-shadow-sm">
                 <IconComponent className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold text-foreground mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
+                <h3 className="fs-6 fw-bold text-foreground mb-2">{value.title}</h3>
+                <p className="text-muted-foreground small">{value.description}</p>
               </div>
             )
           })}

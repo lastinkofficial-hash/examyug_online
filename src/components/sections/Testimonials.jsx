@@ -35,25 +35,26 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Student Testimonials</h2>
-          <p className="text-lg text-muted-foreground">
+    <section className="py-5" style={{ backgroundColor: '#dc2626' }}>
+      <div className="container-lg px-3">
+        <div className="text-center mb-5">
+          <h2 className="fs-3 fs-md-1 fw-bold text-white mb-4">Student Testimonials</h2>
+          <p className="fs-6 text-white-50">
             Hear from our successful students
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              name={testimonial.name}
-              role={testimonial.role}
-              testimonial={testimonial.testimonial}
-              image={testimonial.image}
-              rating={testimonial.rating}
-            />
+            <div key={index} className="col">
+              <TestimonialCard
+                name={testimonial.name}
+                role={testimonial.role}
+                testimonial={testimonial.testimonial}
+                image={testimonial.image}
+                rating={testimonial.rating}
+              />
+            </div>
           ))}
         </div>
       </div>

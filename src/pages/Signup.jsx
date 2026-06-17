@@ -45,17 +45,17 @@ export default function Signup() {
       <AnnouncementBar />
       <Navbar active="/signup" />
 
-      <section className="min-h-[calc(100vh-300px)] flex items-center justify-center px-4 py-16">
-        <div className="w-full max-w-md">
-          <div className="bg-white border border-border rounded-lg p-8 md:p-10 shadow-sm">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-foreground mb-2">Create Account</h1>
+      <section className="min-h-[calc(100vh-300px)] d-flex align-items-center justify-content-center px-3 py-5">
+        <div className="w-100 max-w-md">
+          <div className="bg-white border border-border rounded-2 p-8 md:p-10 shadow-sm-sm">
+            <div className="text-center mb-5">
+              <h1 className="fs-3 fw-bold text-foreground mb-2">Create Account</h1>
               <p className="text-muted-foreground">Join thousands of successful students</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="name" className="d-block small fw-bold text-foreground mb-2">
                   Full Name
                 </label>
                 <div className="relative">
@@ -74,7 +74,7 @@ export default function Signup() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="email" className="d-block small fw-bold text-foreground mb-2">
                   Email Address
                 </label>
                 <div className="relative">
@@ -93,7 +93,7 @@ export default function Signup() {
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="password" className="d-block small fw-bold text-foreground mb-2">
                   Password
                 </label>
                 <div className="relative">
@@ -123,7 +123,7 @@ export default function Signup() {
               </div>
 
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="confirmPassword" className="d-block small fw-bold text-foreground mb-2">
                   Confirm Password
                 </label>
                 <div className="relative">
@@ -155,17 +155,17 @@ export default function Signup() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-6 hover:scale-105 transition-transform duration-300 disabled:opacity-50"
+                className="w-100 py-4-transform disabled:opacity-50"
               >
                 {isLoading ? 'Creating account...' : 'Sign Up'}
               </Button>
             </form>
 
-            <p className="text-center text-muted-foreground mt-6">
+            <p className="text-center text-muted-foreground mt-5">
               Already have an account?{' '}
               <Link
                 to="/login"
-                className="text-primary hover:text-primary/80 font-medium transition-colors duration-300"
+                className="text-primary hover:text-primary/80 fw-bold-colors"
               >
                 Sign in
               </Link>

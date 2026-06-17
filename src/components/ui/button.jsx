@@ -1,34 +1,32 @@
-import PropTypes from "prop-types";
-
 export default function Button({
   children,
   onClick,
   variant = "primary",
   className = "",
   type = "button",
+  size = "md",
 }) {
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
-    secondary: "bg-gray-600 text-white hover:bg-gray-700",
-    outline: "border border-gray-300 hover:bg-gray-100",
-    danger: "bg-red-600 text-white hover:bg-red-700",
+    primary: "btn btn-danger",
+    secondary: "btn btn-secondary",
+    outline: "btn btn-outline-danger",
+    danger: "btn btn-danger",
+    success: "btn btn-success",
+  };
+
+  const sizes = {
+    sm: "btn-sm",
+    md: "",
+    lg: "btn-lg",
   };
 
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`px-4 py-2 rounded-lg transition ${variants[variant]} ${className}`}
+      className={`${variants[variant]} ${sizes[size]} ${className}`}
     >
       {children}
     </button>
   );
 }
-
-Button.propTypes = {
-  children: PropTypes.node,
-  onClick: PropTypes.func,
-  variant: PropTypes.string,
-  className: PropTypes.string,
-  type: PropTypes.string,
-};

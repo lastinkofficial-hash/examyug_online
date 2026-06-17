@@ -8,18 +8,20 @@ export default function TrustStatistics() {
   ];
   
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12 py-20">
+    <section className="py-5" style={{ backgroundColor: '#f5f5f5' }}>
+      <div className="container-lg px-3">
+        <h1 className="fs-3 fs-md-1 fw-bold text-center text-dark mb-5 py-5">
           Trusted by Millions of Students Nationwide
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-lg border border-gray-200 bg-gray-50">
-              <p className="text-3xl md:text-4xl font-bold mb-2" style={{color:"red"}}>
-                {stat.number}
-              </p>
-              <p className="text-muted-foreground">{stat.label}</p>
+            <div key={index} className="col">
+              <div className="text-center p-4 rounded-2 border border-light bg-white h-100" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+                <p className="fs-3 fs-md-2 fw-bold mb-2" style={{color:"#dc2626"}}>
+                  {stat.number}
+                </p>
+                <p className="text-muted small">{stat.label}</p>
+              </div>
             </div>
           ))}
         </div>

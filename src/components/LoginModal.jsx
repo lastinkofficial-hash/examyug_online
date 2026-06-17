@@ -38,29 +38,29 @@ export default function LoginModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[999] flex items-center justify-center">
+    <div className="fixed inset-0 z-[999] d-flex align-items-center justify-content-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-dark/50 backdrop-blur-sm"
         onClick={onClose}
       />
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-md mx-4 bg-white rounded-lg shadow-lg p-8 md:p-10 animate-in fade-in zoom-in-95"
+        className="relative w-100 max-w-md mx-4 bg-white rounded-2 shadow-sm-lg p-8 md:p-10 animate-in fade-in zoom-in-95"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-md transition-colors duration-300 focus:outline-none"
+          className="absolute top-4 right-4 p-2 hover:bg-light rounded-1-colors focus:outline-none"
         >
           <X className="w-5 h-5 text-foreground" />
         </button>
 
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">
+        <div className="text-center mb-5">
+          <h1 className="fs-3 fw-bold text-foreground mb-2">
             Welcome Back
           </h1>
 
@@ -75,7 +75,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-foreground mb-2"
+              className="d-block small fw-bold text-foreground mb-2"
             >
               Email Address
             </label>
@@ -100,7 +100,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-foreground mb-2"
+              className="d-block small fw-bold text-foreground mb-2"
             >
               Password
             </label>
@@ -134,8 +134,8 @@ export default function LoginModal({ isOpen, onClose }) {
           </div>
 
           {/* Remember & Forgot */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div className="d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center gap-2">
               <input
                 id="remember"
                 type="checkbox"
@@ -144,7 +144,7 @@ export default function LoginModal({ isOpen, onClose }) {
 
               <label
                 htmlFor="remember"
-                className="text-sm text-muted-foreground"
+                className="small text-muted-foreground"
               >
                 Remember me
               </label>
@@ -153,7 +153,7 @@ export default function LoginModal({ isOpen, onClose }) {
             <Link
               to="/forgot-password"
               onClick={onClose}
-              className="text-sm text-primary hover:text-primary/80 font-medium transition-colors duration-300"
+              className="small text-primary hover:text-primary/80 fw-bold-colors"
             >
               Forgot password?
             </Link>
@@ -163,7 +163,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full py-6 hover:scale-105 transition-transform duration-300 disabled:opacity-50 focus:outline-none"
+            className="w-100 py-4-transform disabled:opacity-50 focus:outline-none"
           >
             {isLoading ? "Signing in..." : "Sign In"}
           </Button>
@@ -171,11 +171,11 @@ export default function LoginModal({ isOpen, onClose }) {
 
         {/* Divider */}
         <div className="relative my-8">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-border"></div>
+          <div className="absolute inset-0 d-flex align-items-center">
+            <div className="w-100 border-top border-border"></div>
           </div>
 
-          <div className="relative flex justify-center text-sm">
+          <div className="relative d-flex justify-content-center small">
             <span className="px-2 bg-white text-muted-foreground">
               Or continue with
             </span>
@@ -183,11 +183,11 @@ export default function LoginModal({ isOpen, onClose }) {
         </div>
 
         {/* Social Login */}
-        {/* <div className="grid grid-cols-2 gap-4 mb-6">
+        {/* <div className="row row-cols-2 gap-3 mb-5">
           <Button
             type="button"
             variant="outline"
-            className="hover:bg-primary/10 transition-colors duration-300"
+            className="hover:bg-primary/10-colors"
           >
             Google
           </Button>
@@ -195,7 +195,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <Button
             type="button"
             variant="outline"
-            className="hover:bg-primary/10 transition-colors duration-300"
+            className="hover:bg-primary/10-colors"
           >
             GitHub
           </Button>
@@ -207,7 +207,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <Link
             to="/signup"
             onClick={onClose}
-            className="text-primary hover:text-primary/80 font-medium transition-colors duration-300"
+            className="text-primary hover:text-primary/80 fw-bold-colors"
           >
             Sign up
           </Link>

@@ -1,0 +1,35 @@
+.material-card-container {
+    perspective: 1000px;
+    width: 100%;
+    min-height: 500px;
+  }
+  
+  .material-card-inner {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+  
+  .material-card-container.flipped .material-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .material-card-front,
+  .material-card-back {
+    position: absolute;
+    width: 100%;
+    min-height: 500px;
+    backface-visibility: hidden;
+    border-radius: 12px;
+  }
+  
+  .material-card-back {
+    transform: rotateY(180deg);
+  }
+  
+  .material-card-front .card-body,
+  .material-card-back .card-body {
+    min-height: 260px;
+  }
