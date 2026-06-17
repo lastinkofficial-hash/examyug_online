@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Star } from "lucide-react";
 
 export default function TestimonialCard({
@@ -47,11 +46,3 @@ export default function TestimonialCard({
     </div>
   );
 }
-
-TestimonialCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  testimonial: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-};

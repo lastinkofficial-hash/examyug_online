@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from '../ui/Button'; // Adjust path as needed
+import Button from '../ui/button';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");

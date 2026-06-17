@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Download } from 'lucide-react';
-import Button  from '../ui/Button'; // Adjust path as needed
+import Button from '../ui/button';
 
 export default function StudyMaterials() {
   const [selectedBookCategory, setSelectedBookCategory] =

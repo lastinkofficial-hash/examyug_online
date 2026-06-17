@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Star, Users } from 'lucide-react';
 import Button  from '../ui/button';
 
@@ -36,12 +35,3 @@ export function CourseCard({
     </div>
   );
 }
-
-CourseCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  instructor: PropTypes.string.isRequired,
-  students: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-};

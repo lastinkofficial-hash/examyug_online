@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { CourseCard } from '../components/CourseCard';
 import Button from '../ui/button';
 
@@ -131,18 +130,3 @@ export default function FeaturedCourses() {
     </section>
   );
 }
-
-FeaturedCourses.propTypes = {
-  _id: PropTypes.string.isRequired,
-  courseTitle: PropTypes.string.isRequired,
-  courseDescription: PropTypes.string.isRequired,
-  sellingPrice: PropTypes.number.isRequired,
-  maxPrice: PropTypes.number,
-  thumbnail: PropTypes.string.isRequired,
-  featured: PropTypes.string,
-  courseDisplay: PropTypes.string,
-  category: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    categoryTitle: PropTypes.string.isRequired,
-  }),
-};
