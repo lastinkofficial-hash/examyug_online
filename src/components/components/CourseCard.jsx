@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Star, Users } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./CourseCard.css";
+=======
+import { Star, Users } from 'lucide-react';
+import Button  from '../ui/button';
+>>>>>>> 8911004b1c5f6d03e93954585834508dafa4542e
 
 export function CourseCard({
   title,
@@ -97,6 +102,7 @@ export function CourseCard({
     </div>
   );
 }
+<<<<<<< HEAD
 
 CourseCard.propTypes = {
   title: PropTypes.string.isRequired,
@@ -107,3 +113,5 @@ CourseCard.propTypes = {
   image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
+=======
+>>>>>>> 8911004b1c5f6d03e93954585834508dafa4542e

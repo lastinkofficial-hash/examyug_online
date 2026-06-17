@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
+=======
+>>>>>>> 8911004b1c5f6d03e93954585834508dafa4542e
 import { Star } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./TestimonialCard.css";
@@ -114,11 +117,3 @@ export default function TestimonialCard({
     </div>
   );
 }
-
-TestimonialCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  testimonial: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-};

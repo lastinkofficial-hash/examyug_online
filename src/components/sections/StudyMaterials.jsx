@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import Button  from "../ui/Button"; // Adjust path as needed
 import MaterialCard from "../components/MaterialCard";
 
+=======
+import { useState, useEffect } from 'react';
+import { Download } from 'lucide-react';
+import Button from '../ui/button';
+>>>>>>> 8911004b1c5f6d03e93954585834508dafa4542e
 
 export default function StudyMaterials() {
   const [selectedBookCategory, setSelectedBookCategory] =

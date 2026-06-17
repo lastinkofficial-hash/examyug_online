@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-import Button  from "../ui/button";
-import Input from "../ui/input";
-import LoginModal from "../LoginModal";
+import Button  from '../ui/button';
+import Input from '../ui/input';
+import LoginModal from '../LoginModal';
 
 export default function Navbar({ active, onLoginClick }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
